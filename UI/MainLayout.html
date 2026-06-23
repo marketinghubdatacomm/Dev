@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <style>
+      body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+      .container { padding: 16px; }
+      .header { background: #0b5394; color: white; padding: 16px; }
+      .button { padding: 10px 16px; border: none; background: #0b5394; color: white; cursor: pointer; }
+      .button:hover { background: #073763; }
+      .section { margin: 16px 0; }
+      .form-field { margin-bottom: 12px; }
+      .form-field label { display: block; margin-bottom: 4px; font-weight: bold; }
+      .form-field input, .form-field select, .form-field textarea { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+      .grid { border-collapse: collapse; width: 100%; }
+      .grid th, .grid td { border: 1px solid #ddd; padding: 8px; }
+      .grid th { background: #f4f4f4; }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Marketing Hub - Phase 1</h1>
+    </div>
+    <div class="container">
+      <div class="section">
+        <button class="button" onclick="loadLeadList()">Load Lead List</button>
+      </div>
+      <div class="section">
+        <h2>Create Lead</h2>
+        <div class="form-field">
+          <label>Company Name</label>
+          <input id="company_name" type="text" />
+        </div>
+        <div class="form-field">
+          <label>Contact Full Name</label>
+          <input id="full_name" type="text" />
+        </div>
+        <div class="form-field">
+          <label>Email</label>
+          <input id="email" type="email" />
+        </div>
+        <div class="form-field">
+          <label>Phone</label>
+          <input id="phone" type="text" />
+        </div>
+        <div class="form-field">
+          <label>Lead Owner</label>
+          <input id="lead_owner" type="text" />
+        </div>
+        <div class="form-field">
+          <label>Source Name</label>
+          <input id="source_name" type="text" />
+        </div>
+        <div class="form-field">
+          <label>Source Type</label>
+          <select id="source_type">
+            <option value="Portal">Portal</option>
+            <option value="Webinar">Webinar</option>
+            <option value="Google Ads">Google Ads</option>
+            <option value="Referral">Referral</option>
+            <option value="Manual">Manual</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Temperature</label>
+          <select id="temperature">
+            <option value="Cold">Cold</option>
+            <option value="Warm">Warm</option>
+            <option value="Hot">Hot</option>
+          </select>
+        </div>
+        <button class="button" onclick="submitLead()">Submit Lead</button>
+      </div>
+      <div class="section">
+        <h2>Lead List</h2>
+        <div id="leadList"></div>
+      </div>
+    </div>
+    <script>
+      function loadLeadList() {
+        google.script.run.withSuccessHandler(renderLeadList).doListLeads();
+      }
+
+      function renderLeadList(response) {
+        if (!response.success) {
+          alert(response.error);
+          return;
+        }
+        const table = document.createElement('table');
+        table.className = 'grid';
+        const header = document.createElement('tr');
+        ['Lead ID', 'Company', 'Contact', 'Email', 'Phone', 'Owner', 'Stage'].forEach(text => {
+          const th = document.createElement('th');
+          th.textContent = text;
+          header.appendChild(th);
+        });
+        table.appendChild(header);
+        response.data.forEach(lead => {
+          const row = document.createElement('tr');
+          ['lead_id', 'company_id', 'contact_id', 'lead_creator', 'lead_owner', 'funnel_stage'].forEach(key => {
+            const td = document.createElement('td');
+            td.textContent = lead[key] || '';
+            row.appendChild(td);
+          });
+          table.appendChild(row);
+        });
+        const container = document.getElementById('leadList');
+        container.innerHTML = '';
+        container.appendChild(table);
+      }
+
+      function submitLead() {
+        const payload = {
+          company_name: document.getElementById('company_name').value,
+          full_name: document.getElementById('full_name').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          lead_owner: document.getElementById('lead_owner').value,
+          source_name: document.getElementById('source_name').value,
+          source_type: document.getElementById('source_type').value,
+          temperature: document.getElementById('temperature').value,
+          created_by: document.getElementById('lead_owner').value
+        };
+        google.script.run.withSuccessHandler(handleCreateResult).doCreateLead(JSON.stringify(payload));
+      }
+
+      function handleCreateResult(response) {
+        if (!response.success) {
+          alert(response.error);
+          return;
+        }
+        alert('Lead created: ' + response.data.lead_id);
+        loadLeadList();
+      }
+    </script>
+  </body>
+</html>

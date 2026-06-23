@@ -1,0 +1,5354 @@
+01_BRD_Marketing_Hub
+Business Requirement Document
+Visi, tujuan bisnis, KPI, stakeholder, scope, roadmap dan business rules Marketing Hub.
+Dokumen ini merupakan kerangka awal. Versi lengkap akan memuat spesifikasi rinci berdasarkan requirement Marketing Hub yang telah disepakati.
+
+1. Executive Summary
+Nama Produk
+Marketing Hub
+Jenis Sistem
+Marketing Operations Platform
+Platform
+* Google Apps Script 
+* Google Sheets 
+* Google Drive 
+* Google Docs 
+Target User
+Internal perusahaan.
+Maksimal:
+10-20 user
+Tujuan Utama
+Menyatukan seluruh aktivitas marketing dalam satu platform sehingga seluruh data marketing menjadi:
+* Terpusat 
+* Terukur 
+* Terdokumentasi 
+* Real-time 
+
+2. Background Problem
+Kondisi Saat Ini
+Data tersebar di berbagai tempat:
+Spreadsheet Leads
+Spreadsheet Portal
+Spreadsheet Campaign
+Spreadsheet Cost
+Spreadsheet Project
+Spreadsheet MOM
+Akibatnya:
+Masalah 1
+Tidak ada single source of truth.
+
+Masalah 2
+Sulit melihat funnel marketing secara real-time.
+
+Masalah 3
+Sulit mengukur performa BDR.
+
+Masalah 4
+Sulit menghubungkan:
+Campaign
+?
+Lead
+?
+MQL
+?
+SQL
+
+Masalah 5
+Knowledge meeting tidak terdokumentasi dengan baik.
+
+3. Business Goals
+Goal 1
+Meningkatkan visibilitas funnel marketing.
+
+Goal 2
+Mengukur performa marketing secara real-time.
+
+Goal 3
+Mengurangi pekerjaan administrasi manual.
+
+Goal 4
+Menyediakan dashboard eksekutif untuk owner.
+
+Goal 5
+Membangun knowledge repository marketing.
+
+4. Success Metrics
+Funnel
+KPITargetTotal LeadTrackingTotal MQLTrackingTotal SQLTrackingTotal OptyTrackingTotal WonTracking
+BDR
+KPICall CountFollow Up CountMQL GeneratedSQL Generated
+Campaign
+KPICPLCost per MQLCost per SQL
+Portal
+KPIRegisterVerifiedActivated
+Project
+KPIOpen ProjectOverdue TaskCompleted Task
+5. Product Vision
+Visi
+Menjadi pusat operasional dan sumber data tunggal seluruh aktivitas marketing perusahaan.
+
+Scope Utama
+Lead Management
+Mengelola lead.
+
+Funnel Management
+Mengelola perpindahan funnel.
+
+Campaign Management
+Mengelola aktivitas akuisisi.
+
+Portal Performance
+Mengukur performa DCloud.
+
+Project Management
+Mengelola pekerjaan marketing.
+
+MOM Repository
+Mengelola pengetahuan organisasi.
+
+Marketing Cost
+Mengelola biaya marketing.
+
+Dashboard
+Mengelola KPI.
+
+6. Stakeholder
+Owner
+Kebutuhan:
+Dashboard
+Approval
+Executive Report
+
+Manager
+Kebutuhan:
+Monitoring Team
+Approval
+Project Tracking
+
+Admin
+Kebutuhan:
+Data Management
+Import Data
+System Configuration
+
+BDR
+Kebutuhan:
+Lead Processing
+Activity Logging
+Follow Up
+
+Digital Marketing
+Kebutuhan:
+Campaign
+Portal
+SEO
+Ads Performance
+
+Marketing Specialist
+Kebutuhan:
+Project
+Task
+MOM
+
+7. Core Business Process
+Acquisition
+Campaign
+?
+Lead Source
+?
+Lead
+
+Qualification
+Lead
+?
+Activity
+?
+MQL
+?
+SQL
+
+Sales Handover
+SQL
+?
+Sales
+?
+Opportunity
+?
+Won/Lost
+
+Marketing Operations
+Project
+?
+Task
+?
+Execution
+?
+Result
+
+8. Product Principles
+Principle 1
+Company-first design.
+
+Principle 2
+Every activity must be recorded.
+
+Principle 3
+No hard delete.
+Semua data penting harus memiliki audit trail.
+
+Principle 4
+Approval driven.
+Aksi sensitif harus melalui approval.
+
+Principle 5
+Mobile friendly.
+
+Principle 6
+Google Workspace native.
+
+9. Phase Planning
+Phase 1
+Core CRM & Funnel
+Modul
+Login
+User Management
+Lead
+Company
+Contact
+Activity
+Funnel
+Approval
+Dashboard
+
+Phase 2
+Lead Intelligence
+Modul
+Portal
+Campaign
+Attribution
+Product Interest
+SQL Tracking
+
+Phase 3
+Marketing Operations
+Modul
+Project
+Task
+MOM
+Workload
+
+Phase 4
+Marketing Intelligence
+Modul
+GA4
+Google Ads
+Search Console
+ROI Dashboard
+
+
+
+02_PRD_Marketing_Hub
+Product Requirement Document
+Modul Dashboard, Lead Management, Funnel, Portal, Campaign, Project, MOM, Approval, User Management.
+Dokumen ini merupakan kerangka awal. Versi lengkap akan memuat spesifikasi rinci berdasarkan requirement Marketing Hub yang telah disepakati.
+
+PRD jauh lebih detail.
+Jika BRD menjawab:
+Kenapa sistem dibuat?
+Maka PRD menjawab:
+Sistem harus bekerja seperti apa?
+Untuk Marketing Hub, PRD akan terdiri dari sekitar:
+1. Dashboard
+2. User Management
+3. Company Management
+4. Contact Management
+5. Lead Management
+6. Lead Activity
+7. Funnel Management
+8. Approval Center
+9. Notification Center
+10. Portal Performance
+11. Campaign Management
+12. Project Management
+13. MOM Repository
+14. Marketing Cost
+15. Reports & Analytics
+16. System Settings
+
+
+
+03_Data_Dictionary
+Data Dictionary
+Definisi entitas: Company, Contact, Lead, Activity, Funnel History, Campaign, Project, MOM, Approval, Notification.
+Dokumen ini merupakan kerangka awal. Versi lengkap akan memuat spesifikasi rinci berdasarkan requirement Marketing Hub yang telah disepakati.
+
+ENTITY 1
+Master_User
+Tujuan
+Menyimpan seluruh user aplikasi.
+
+FieldTypeRequireduser_idStringYesfull_nameTextYesemailEmailYesrole_idStringYesstatusEnumYescreated_atDatetimeYes
+Status
+Active
+Inactive
+Suspended
+
+ENTITY 2
+Master_Role
+
+FieldTyperole_idStringrole_nameTextdescriptionText
+Default Role
+Owner
+Manager
+Admin
+BDR
+Digital Marketing
+Marketing Specialist
+Sales
+
+ENTITY 3
+Master_Product
+
+FieldTypeproduct_idStringproduct_nameTextproduct_codeTextstatusEnum
+Initial Data
+DCloud
+DTrust
+DCode
+DInfra
+
+ENTITY 4
+Master_Company
+
+FieldTypecompany_idStringcompany_nameTextindustryTextcompany_sizeEnumwebsiteTextcityTextcountryTextnotesLong Textcreated_byUsercreated_atDatetime
+Company Size
+1-10
+11-50
+51-200
+201-500
+500+
+
+ENTITY 5
+Master_Contact
+
+FieldTypecontact_idStringcompany_idFKfull_nameTextemailTextphoneTextjob_titleTextseniority_levelEnumlinkedin_urlTextnotesLong Text
+Constraint
+Email Unique
+Phone Unique
+
+Seniority Level
+Staff
+Supervisor
+Manager
+Head
+Director
+C-Level
+Owner
+
+ENTITY 6
+Trx_Lead
+Ini jantung sistem.
+
+FieldTypelead_idStringcompany_idFKcontact_idFKlead_ownerUserlead_creatorUserassigned_salesUserfunnel_stageEnumlead_statusEnumtemperatureEnumestimated_valueCurrencyexpected_close_dateDatecreated_atDatetime
+Funnel Stage
+Lead
+MQL
+SQL
+Opportunity
+Closed Won
+Closed Lost
+Exited
+
+Lead Status
+New
+In Progress
+Waiting Response
+Nurturing
+Qualified
+Handed To Sales
+Dormant
+Exited
+
+Temperature
+Cold
+Warm
+Hot
+
+ENTITY 7
+Trx_Lead_Source
+Karena satu lead bisa punya banyak source.
+
+Fieldlead_source_idlead_idsource_nameis_primarysource_date
+Source Example
+Portal
+Webinar
+Workshop
+Referral
+Google Ads
+SEO
+LinkedIn
+Internal Database
+
+ENTITY 8
+Trx_Lead_Product
+
+Fieldlead_product_idlead_idproduct_idinterest_level
+Interest Level
+Low
+Medium
+High
+Very High
+
+ENTITY 9
+Trx_Lead_Activity
+Ini tabel yang akan paling besar.
+
+Fieldactivity_idlead_idactivity_dateactivity_typeactivity_outcomenext_actionnext_followup_datenotescreated_by
+Activity Type
+Call
+WhatsApp
+Email
+LinkedIn
+Meeting Online
+Meeting Offline
+Portal Follow Up
+Event Follow Up
+Other
+
+ENTITY 10
+Trx_Funnel_History
+
+Fieldhistory_idlead_idfrom_stageto_stagemovement_datereasoncreated_by
+ENTITY 11
+Trx_Approval
+
+Fieldapproval_idapproval_typereference_idrequested_byapproved_bystatusnotesrequest_dateapproval_date
+ENTITY 12
+Trx_Portal_Register
+
+Fieldregister_idemailfull_namecompany_namesourceregister_dateverification_statusactivation_statusconverted_to_lead
+Verification
+Registered
+Verified
+Rejected
+
+Activation
+Not Activated
+Activated
+
+ENTITY 13
+Trx_Campaign
+
+Fieldcampaign_idcampaign_namecampaign_typestart_dateend_dateownerbudgetstatus
+Campaign Type
+Google Ads
+SEO
+Webinar
+Workshop
+Email Marketing
+Referral Program
+
+ENTITY 14
+Trx_Project
+
+Fieldproject_idproject_nameownerstart_datedue_dateprioritystatusprogress_percent
+ENTITY 15
+Trx_Task
+
+Fieldtask_idproject_idtask_nameassigned_todue_datestatuspriority
+ENTITY 16
+Trx_MOM
+
+Fieldmom_idmeeting_titlemeeting_dateorganizerparticipantssummarygoogle_doc_url
+ENTITY 17
+Trx_MOM_Action
+
+Fieldaction_idmom_idtask_nameassigned_todue_datestatus
+ENTITY 18
+Trx_Notification
+
+Fieldnotification_iduser_idtitlemessageis_readcreated_at
+SHEET ARCHITECTURE V1
+Kalau nanti diimplementasikan ke Google Sheets, saya sarankan struktur workbook seperti ini:
+Master_User
+Master_Role
+Master_Product
+Master_Company
+Master_Contact
+
+Trx_Lead
+Trx_Lead_Source
+Trx_Lead_Product
+Trx_Lead_Activity
+Trx_Funnel_History
+
+Trx_Portal_Register
+
+Trx_Campaign
+
+Trx_Project
+Trx_Task
+
+Trx_MOM
+Trx_MOM_Action
+
+Trx_Approval
+Trx_Notification
+
+Rpt_Dashboard_Cache
+System_Settings
+
+
+
+04_ERD_Description
+ERD
+Relasi Company->Contact->Lead->Activity->Funnel History serta modul pendukung lainnya.
+Dokumen ini merupakan kerangka awal. Versi lengkap akan memuat spesifikasi rinci berdasarkan requirement Marketing Hub yang telah disepakati.
+
+
+Domain 1 - CRM Core
+Company
+?
+??? Contact
+?     ?
+?     ??? Lead
+?             ?
+?             ??? Lead Source
+?             ??? Lead Product
+?             ??? Activity
+?             ??? Funnel History
+?             ??? Approval
+?             ??? Notification
+
+Domain 2 - Marketing Intelligence
+Campaign
+?
+??? Campaign Cost
+?
+??? Lead Source
+?
+??? Portal Register
+
+Domain 3 - Marketing Operations
+Project
+?
+??? Task
+?
+??? MOM
+        ?
+        ??? Action Item
+
+Domain 4 - Security
+Role
+?
+??? User
+
+
+
+05_Permission_Matrix
+Permission Matrix
+Hak akses Owner, Manager, Admin, BDR, Digital Marketing, Marketing Specialist, Sales.
+Dokumen ini merupakan kerangka awal. Versi lengkap akan memuat spesifikasi rinci berdasarkan requirement Marketing Hub yang telah disepakati.
+
+Filosofi Permission Marketing Hub
+Saya sarankan menggunakan:
+RBAC (Role Based Access Control)
+Bukan:
+Permission per user langsung
+Tetapi:
+Role
+?
+Permission
+?
+User
+
+Role Hierarchy
+Owner
+?
+Manager
+?
+Admin
+?
+??? BDR
+??? Digital Marketing
+??? Marketing Specialist
+??? Sales
+
+Permission Code
+Saya biasanya membagi menjadi:
+CodeArtiVViewCCreateEEditDDeleteAApproveXTidak ada akses
+MODUL USER MANAGEMENT
+ActionOwnerManagerAdminBDRDMMSSalesView UserVVVXXXXCreate UserCXCXXXXEdit UserEXEXXXXDelete UserDXXXXXXReset PasswordEXEXXXX
+MODUL COMPANY
+ActionOwnerManagerAdminBDRDMMSSalesViewVVVVVVVCreateCCCCXXXEditEEEEXXXDeleteDXDXXXX
+MODUL CONTACT
+ActionOwnerManagerAdminBDRDMMSSalesViewVVVVXXVCreateCCCCXXXEditEEEEXXXDeleteDXDXXXX
+MODUL LEAD
+Ini modul paling penting.
+ActionOwnerManagerAdminBDRSalesView All LeadVVVXXView Own LeadVVVVVCreate LeadCCCCXEdit Own LeadEEEEXEdit All LeadEEEXXDelete LeadDXDXXTransfer LeadAACXXAssign SalesEEEXX
+MODUL ACTIVITY
+ActionOwnerManagerAdminBDRSalesView ActivityVVVVVCreate ActivityCCCCXEdit ActivityEEEEXDelete ActivityDXDXX
+MODUL FUNNEL
+ActionOwnerManagerAdminBDRSalesMove Lead ? MQLEEEEXMove MQL ? SQLEEEEXUpdate OpportunityEEEXEUpdate Won/LostEEEXEExit FunnelAAXRequestX
+MODUL APPROVAL
+ActionOwnerManagerAdminBDRView ApprovalVVVVCreate RequestCCCCApproveAAXXRejectAAXX
+MODUL CAMPAIGN
+ActionOwnerManagerAdminDMViewVVVVCreateCCCCEditEEEEDeleteDXDX
+MODUL PORTAL
+ActionOwnerManagerAdminDMBDRViewVVVVVImport RegisterXXCCXConvert to LeadXXEEX
+MODUL PROJECT
+ActionOwnerManagerAdminMarketing SpecialistViewVVVVCreateCCCCEditEEEEDeleteDXDXClose ProjectAAXX
+MODUL TASK
+ActionOwnerManagerAdminSemua UserView Own TaskVVVVUpdate ProgressEEEEMark CompleteEEEE
+MODUL MOM
+ActionOwnerManagerAdminSemua UserView MOMVVVVCreate MOMCCCCEdit MOMEEEOwner MOMDelete MOMDXDX
+MODUL COST
+ActionOwnerManagerAdminDMMarketing SpecialistView CostVVVVVInput CostCCCCCEdit CostEEEEEDelete CostDXDXX
+MODUL DASHBOARD
+Saya sarankan dashboard dibagi 3 level.
+Executive Dashboard
+RoleOwnerManager
+Operational Dashboard
+RoleAdminBDRDMMarketing Specialist
+Personal Dashboard
+Semua user.
+Menampilkan:
+My Tasks
+My Leads
+My Follow Up
+My Approval
+
+Rekomendasi Tambahan (Sangat Penting)
+Jangan hanya simpan permission di kode.
+Buat tabel:
+Master_Role
+Master_Permission
+Role_Permission
+Contoh:
+RolePermissionBDRLEAD_CREATEBDRLEAD_EDIT_OWNBDRACTIVITY_CREATEDengan cara ini nanti Owner bisa mengubah permission dari menu Setting tanpa harus mengubah Apps Script.
+Untuk Marketing Hub yang akan terus berkembang, desain permission berbasis tabel seperti ini jauh lebih scalable daripada hardcode role di file .gs.
+
+
+
+06_Apps_Script_Technical_Design
+Technical Design
+Arsitektur Google Apps Script, Google Sheets, Drive, Docs, Integrasi GA4, Ads, Search Console.
+Dokumen ini merupakan kerangka awal. Versi lengkap akan memuat spesifikasi rinci berdasarkan requirement Marketing Hub yang telah disepakati.
+
+Technical Design & Development Architecture
+Prinsip Arsitektur
+Saya akan menggunakan pendekatan:
+Modular Monolith
+Bukan:
+God File
+Karena Marketing Hub akan berkembang terus.
+
+Struktur Project
+Idealnya seperti ini:
+MarketingHub
+?
+??? appsscript.json
+?
+??? Core
+?   ??? Config.gs
+?   ??? Constants.gs
+?   ??? Auth.gs
+?   ??? Permission.gs
+?   ??? Logger.gs
+?   ??? Utils.gs
+?
+??? Modules
+?   ??? User
+?   ??? Company
+?   ??? Contact
+?   ??? Lead
+?   ??? Activity
+?   ??? Funnel
+?   ??? Approval
+?   ??? Campaign
+?   ??? Portal
+?   ??? Project
+?   ??? MOM
+?   ??? Notification
+?   ??? Dashboard
+?
+??? API
+?   ??? ApiLead.gs
+?   ??? ApiActivity.gs
+?   ??? ApiDashboard.gs
+?   ??? ApiProject.gs
+?
+??? UI
+?   ??? Layout
+?   ??? Components
+?   ??? Pages
+?   ??? Assets
+?
+??? Database
+    ??? SheetService.gs
+    ??? QueryService.gs
+    ??? ValidationService.gs
+
+Backend Layer
+Config.gs
+Berisi:
+SPREADSHEET_ID
+DRIVE_FOLDER_ID
+DOC_TEMPLATE_ID
+Tujuannya:
+Kalau pindah environment:
+Dev
+Test
+Production
+cukup ubah Config.
+
+Constants.gs
+Berisi seluruh enum.
+Contoh:
+FUNNEL_STAGE = {
+ LEAD: 'Lead',
+ MQL: 'MQL',
+ SQL: 'SQL'
+}
+Jangan pernah hardcode status.
+
+Auth.gs
+Mengelola:
+Login
+Session
+Role
+
+Permission.gs
+Mengelola:
+CanViewLead
+CanDeleteLead
+CanApproveExit
+
+Database Layer
+Ini yang sering diabaikan.
+
+SheetService.gs
+Hanya bertugas:
+Read Sheet
+Write Sheet
+Update Sheet
+Delete Sheet
+Tidak ada business logic.
+
+QueryService.gs
+Bertugas:
+Find Lead
+Find Company
+Find Activity
+
+ValidationService.gs
+Bertugas:
+Check Duplicate Email
+Check Duplicate Phone
+Check Mandatory Field
+
+Lead Module
+Karena Lead adalah inti sistem.
+Saya pecah lagi.
+
+LeadController.gs
+Mengatur request.
+Create Lead
+Update Lead
+Delete Lead
+
+LeadService.gs
+Business logic.
+Generate Lead ID
+Assign Owner
+Create History
+
+LeadRepository.gs
+Interaksi ke spreadsheet.
+Insert Lead
+Update Lead
+Find Lead
+
+Activity Module
+
+ActivityController.gs
+Add Activity
+Edit Activity
+
+ActivityService.gs
+Generate Follow Up
+Update Lead Status
+
+ActivityRepository.gs
+Save Activity
+Get Activity
+
+Funnel Module
+
+FunnelController.gs
+Move Stage
+Request Exit
+
+FunnelService.gs
+Validate Movement
+Create History
+
+FunnelRepository.gs
+Save History
+
+Dashboard Module
+Dashboard akan menjadi modul paling berat.
+Karena banyak agregasi data.
+
+DashboardService.gs
+Menghitung:
+Total Lead
+Total MQL
+Total SQL
+
+DashboardCacheService.gs
+Menyimpan hasil agregasi ke:
+Rpt_Dashboard_Cache
+Agar dashboard cepat.
+
+Frontend Architecture
+Jangan hanya:
+Index.html
+
+Layout
+MainLayout.html
+Kerangka aplikasi.
+Sidebar
+Header
+Content
+Footer
+
+Sidebar.html
+Menu kiri.
+
+Header.html
+Top bar.
+
+Pages
+DashboardPage.html
+
+LeadPage.html
+
+LeadDetailPage.html
+
+ActivityPage.html
+
+CampaignPage.html
+
+PortalPage.html
+
+ProjectPage.html
+
+MOMPage.html
+
+SettingPage.html
+
+Components
+Komponen yang bisa dipakai ulang.
+
+TableComponent.html
+
+ModalComponent.html
+
+NotificationComponent.html
+
+LoadingComponent.html
+
+ApprovalComponent.html
+
+Assets
+CSS
+Saya sarankan:
+styles.css
+darkmode.css
+
+JS
+dashboard.js
+lead.js
+project.js
+mom.js
+Pisah per modul.
+
+Folder Google Drive
+Saya juga sarankan dari awal dibuat struktur seperti ini:
+Marketing Hub
+?
+??? MOM
+?
+??? Templates
+?
+??? Exports
+?
+??? Imports
+?
+??? Archive
+
+
+
+07_AI_Agent_Build_Guide
+AI Agent Build Guide
+Panduan AI untuk membangun, mengubah, dan mengembangkan Marketing Hub secara konsisten.
+Dokumen ini merupakan kerangka awal. Versi lengkap akan memuat spesifikasi rinci berdasarkan requirement Marketing Hub yang telah disepakati.
+
+Tujuan AI Agent Build Guide
+Dokumen ini menjawab:
+Jika suatu hari saya membuka Cursor / Claude Code / ChatGPT / Gemini
+dan berkata:
+
+"Tolong tambahkan fitur X"
+
+bagaimana AI bisa memahami sistem dengan benar
+tanpa merusak modul lain?
+
+Filosofi Utama
+AI tidak boleh menganggap dirinya programmer bebas.
+AI harus menganggap dirinya:
+Software Engineer Marketing Hub
+yang wajib mengikuti:
+* BRD 
+* PRD 
+* Data Dictionary 
+* ERD 
+* Permission Matrix 
+sebagai source of truth.
+
+SECTION 1
+Project Identity
+Product Name
+Marketing Hub
+Product Type
+Marketing Operations Platform
+Target User
+Owner
+Manager
+Admin
+BDR
+Digital Marketing
+Marketing Specialist
+Sales
+
+Technology Stack
+Frontend
+HTML
+CSS
+Javascript
+Bootstrap 5
+
+Backend
+Google Apps Script
+
+Database
+Google Sheets
+
+Document
+Google Docs
+
+Storage
+Google Drive
+
+SECTION 2
+Non Negotiable Rules
+Ini bagian paling penting.
+
+Rule 1
+Jangan membuat sheet baru tanpa approval.
+Semua sheet harus mengacu ke:
+Data Dictionary
+
+Rule 2
+Jangan mengubah field existing.
+Contoh:
+SALAH
+lead_owner
+?
+owner
+Benar:
+buat field baru jika diperlukan
+
+Rule 3
+Jangan menghapus field.
+Gunakan:
+deprecated
+
+Rule 4
+Semua perubahan funnel wajib membuat histori.
+
+Rule 5
+Semua approval wajib tercatat.
+
+Rule 6
+Tidak boleh ada hard delete.
+Gunakan:
+is_deleted
+atau
+status = inactive
+
+SECTION 3
+Coding Standards
+
+Naming Convention
+Variable
+leadId
+companyId
+activityDate
+
+Function
+createLead()
+updateLead()
+moveLeadStage()
+
+Sheet
+Master_Company
+Master_Contact
+
+Trx_Lead
+Trx_Lead_Activity
+
+File Naming
+Backend
+LeadController.gs
+LeadService.gs
+LeadRepository.gs
+
+Frontend
+LeadPage.html
+LeadDetailPage.html
+
+SECTION 4
+Architecture Rules
+AI wajib mengikuti:
+Controller
+?
+Service
+?
+Repository
+?
+Sheet
+
+Dilarang
+Controller langsung membaca spreadsheet.
+Contoh salah:
+function createLead() {
+
+ SpreadsheetApp
+   .openById(...)
+   .getSheetByName(...)
+}
+
+Benar
+LeadController
+?
+LeadService
+?
+LeadRepository
+?
+SheetService
+
+SECTION 5
+Data Integrity Rules
+
+Contact
+Email unik.
+
+Contact
+Phone unik.
+
+Company
+Jika ditemukan company mirip:
+PT ABC
+
+PT. ABC
+
+PT ABC Indonesia
+AI wajib menampilkan:
+Company Matching Dialog
+
+Lead
+Lead wajib memiliki:
+Lead Creator
+Lead Owner
+
+SECTION 6
+Funnel Rules
+
+Lead
+Data baru masuk.
+
+MQL
+Sudah layak secara marketing.
+
+SQL
+Siap diterima sales.
+
+Opportunity
+Quotation sudah dibuat sales.
+
+Closed Won
+Menjadi customer.
+
+Closed Lost
+Tidak jadi customer.
+
+Exited
+Keluar funnel.
+Wajib approval.
+
+SECTION 7
+Activity Rules
+AI harus memahami:
+Semua aktivitas wajib tercatat.
+Tidak boleh hanya update status.
+
+Setiap aktivitas minimal:
+Lead
+Tanggal
+Jenis Aktivitas
+Outcome
+Next Action
+User
+
+SECTION 8
+UI Design Rules
+Tema:
+Google Workspace
++
+Trello
+
+Karakteristik:
+Minimalis
+Modern
+Cepat
+Mobile Friendly
+
+Dark Mode
+Wajib tersedia.
+
+Sidebar
+Konsisten di semua halaman.
+
+SECTION 9
+Dashboard Rules
+Dashboard tidak boleh membaca seluruh data realtime.
+AI wajib menggunakan:
+Rpt_Dashboard_Cache
+
+Refresh:
+Scheduled Trigger
+
+SECTION 10
+Google Drive Rules
+Struktur wajib:
+Marketing Hub
+
+??? MOM
+??? Templates
+??? Exports
+??? Imports
+??? Archive
+
+SECTION 11
+AI Change Management Process
+Setiap perubahan wajib mengikuti:
+
+STEP 1
+Analisa requirement.
+
+STEP 2
+Periksa:
+BRD
+PRD
+Data Dictionary
+ERD
+Permission Matrix
+
+STEP 3
+Tentukan impact.
+
+STEP 4
+Buat design proposal.
+
+STEP 5
+Minta approval.
+
+STEP 6
+Baru generate code.
+
+SECTION 12
+Prompt Template Untuk AI
+Ini yang nanti paling sering Anda gunakan.
+Tambah Fitur
+Anda adalah Senior Software Architect Marketing Hub.
+
+Baca seluruh dokumentasi:
+- BRD
+- PRD
+- Data Dictionary
+- ERD
+- Permission Matrix
+- AI Build Guide
+
+Lakukan impact analysis terlebih dahulu.
+
+Jangan langsung menulis kode.
+
+Berikan:
+1. Modul yang terdampak
+2. Sheet yang terdampak
+3. File .gs yang terdampak
+4. File .html yang terdampak
+5. Risiko perubahan
+
+Tunggu approval sebelum generate code.
+
+Bug Fix
+Anda adalah Senior Software Engineer Marketing Hub.
+
+Jangan mengubah arsitektur.
+
+Analisa root cause.
+
+Tunjukkan:
+- penyebab bug
+- file terdampak
+- solusi
+
+Tunggu approval sebelum melakukan perubahan.
+
+
+
+08_Development_Convention.md
+AI Agent Build Guide
+Panduan AI untuk mengetahui kalau mau menulis kode di Marketing Hub, caranya bagaimana?
+Dokumen ini merupakan kerangka awal. Versi lengkap akan memuat spesifikasi rinci berdasarkan requirement Marketing Hub yang telah disepakati.
+
+Tujuan
+Menjadi standar resmi development Marketing Hub.
+Dokumen ini mengatur:
+* Struktur project 
+* Struktur file 
+* Standar coding 
+* Workflow perubahan 
+* Release management 
+* AI prompting standard 
+
+1. Project Philosophy
+Marketing Hub dibangun dengan prinsip:
+Simplicity
+Lebih memilih solusi sederhana.
+
+Maintainability
+Kode harus mudah dipahami AI maupun manusia.
+
+Scalability
+Mudah ditambah modul baru.
+
+Auditability
+Semua perubahan penting harus terlacak.
+
+2. Project Structure
+Struktur final yang wajib dipatuhi:
+MarketingHub
+?
+??? appsscript.json
+?
+??? Core
+?
+??? Modules
+?
+??? Database
+?
+??? Services
+?
+??? API
+?
+??? UI
+?
+??? Assets
+?
+??? Docs
+
+3. Folder Standard
+Core
+Berisi kode global.
+Contoh:
+Config.gs
+Constants.gs
+Auth.gs
+Permission.gs
+Utils.gs
+Logger.gs
+Rule:
+Tidak boleh ada business logic.
+
+Modules
+Berisi modul bisnis.
+Contoh:
+Lead
+Campaign
+Project
+MOM
+
+Database
+Berisi interaksi spreadsheet.
+Contoh:
+SheetService.gs
+QueryService.gs
+
+Services
+Business logic.
+Contoh:
+LeadService.gs
+ActivityService.gs
+
+API
+Endpoint frontend.
+Contoh:
+LeadApi.gs
+DashboardApi.gs
+
+UI
+Semua file HTML.
+
+4. Module Structure Standard
+Setiap modul wajib mengikuti struktur ini:
+Lead
+?
+??? LeadController.gs
+??? LeadService.gs
+??? LeadRepository.gs
+??? LeadValidator.gs
+??? LeadMapper.gs
+
+Controller
+Menerima request.
+Tidak boleh ada query sheet.
+
+Service
+Business logic.
+
+Repository
+Database access.
+
+Validator
+Validasi data.
+
+Mapper
+Transformasi data.
+
+5. Naming Convention
+Sheet
+Format:
+Master_
+Trx_
+Rpt_
+Sys_
+
+Contoh:
+Master_Company
+
+Trx_Lead
+
+Rpt_Dashboard_Cache
+
+Sys_Settings
+
+ID Format
+Company
+COM-000001
+
+Contact
+CON-000001
+
+Lead
+LED-000001
+
+Activity
+ACT-000001
+
+Project
+PRJ-000001
+
+MOM
+MOM-000001
+
+6. Function Naming
+Gunakan:
+createLead()
+
+updateLead()
+
+assignLead()
+
+moveLeadStage()
+
+Hindari:
+save()
+
+doProcess()
+
+run()
+
+Karena AI sulit memahami maksudnya.
+
+7. Variable Naming
+Gunakan:
+leadId
+
+companyId
+
+assignedSalesId
+
+Hindari:
+id
+
+tmp
+
+data1
+
+8. Error Handling Standard
+Semua error wajib:
+Dicatat
+System Log
+
+Ditampilkan
+User Friendly Message
+
+Contoh:
+Jangan:
+Exception Error
+
+Tampilkan:
+Email sudah digunakan oleh contact lain.
+
+9. Validation Standard
+Validation dilakukan berlapis.
+Frontend
+Validasi dasar.
+
+Backend
+Validasi utama.
+
+Repository
+Validasi integritas.
+
+Contoh:
+Email wajib unik.
+Dicek:
+* UI 
+* Service 
+* Repository 
+
+10. Audit Trail Rules
+Semua perubahan penting wajib dicatat.
+
+Contoh:
+Lead berubah:
+Lead
+?
+MQL
+Harus membuat:
+Trx_Funnel_History
+
+Lead Owner berubah:
+BDR A
+?
+BDR B
+Harus membuat:
+Trx_Approval
+
+11. Sheet Access Rules
+AI dilarang:
+SpreadsheetApp
+.getSheetByName(...)
+langsung dari Controller.
+
+Wajib:
+Controller
+?
+Service
+?
+Repository
+?
+SheetService
+
+12. UI Development Rules
+Semua halaman wajib menggunakan:
+MainLayout.html
+
+Tidak boleh membuat:
+Dashboard.html
+
+Lead.html
+
+Project.html
+dengan layout masing-masing.
+
+Semua memakai layout bersama.
+
+13. CSS Rules
+Gunakan:
+variables.css
+layout.css
+components.css
+darkmode.css
+
+Jangan:
+style="..."
+di HTML.
+
+14. Javascript Rules
+Pisah per modul.
+Contoh:
+lead.js
+
+activity.js
+
+campaign.js
+
+project.js
+
+15. Dashboard Rules
+Dashboard tidak boleh menghitung data langsung.
+
+Salah:
+Dashboard
+?
+100.000 record
+?
+Render
+
+Benar:
+Scheduled Trigger
+?
+Rpt_Dashboard_Cache
+?
+Dashboard
+
+16. Google Docs Rules
+Semua MOM menggunakan template.
+
+Folder:
+Marketing Hub
+
+??? MOM
+
+AI tidak boleh membuat dokumen di root Drive.
+
+17. Release Workflow
+Development
+Dev Spreadsheet
+
+UAT
+UAT Spreadsheet
+
+Production
+Production Spreadsheet
+
+Jangan develop langsung di production.
+
+18. Change Request Workflow
+Semua perubahan wajib:
+Requirement
+?
+Impact Analysis
+?
+Approval
+?
+Development
+?
+Testing
+?
+Deploy
+
+Tidak boleh:
+Prompt
+?
+Generate Code
+?
+Deploy
+
+19. AI Prompting Standard
+Saat meminta AI membuat fitur baru:
+Wajib sertakan:
+Modul:
+Lead Management
+
+Tujuan:
+Menambahkan fitur duplicate detection
+
+Dokumen Referensi:
+PRD
+ERD
+Data Dictionary
+
+Output:
+Impact Analysis dahulu
+
+20. Golden Rules
+Ini aturan yang menurut saya paling penting.
+Rule #1
+Jangan pernah mengubah Data Dictionary tanpa approval.
+
+Rule #2
+Jangan pernah menghapus field.
+
+Rule #3
+Jangan pernah menghapus histori.
+
+Rule #4
+Semua perubahan funnel harus memiliki histori.
+
+Rule #5
+Semua approval harus memiliki audit trail.
+
+Rule #6
+Tidak boleh ada kode baru yang melanggar struktur Controller ? Service ? Repository.
+
+Kalau saya yang membangun Marketing Hub bersama AI, saya bahkan akan menaruh dokumen ini di folder /Docs dan setiap prompt ke AI akan diawali dengan:
+Baca terlebih dahulu:
+- BRD
+- PRD
+- Data Dictionary
+- ERD
+- Permission Matrix
+- Development Convention
+
+Jangan menghasilkan kode sebelum melakukan impact analysis.
+Satu aturan itu saja biasanya mengurangi 70–80% kesalahan AI saat proyek sudah mencapai puluhan ribu baris kode.
+
+
+
+09_Functional_Spesification_Document
+Functional Spesification
+Panduan untuk menjelaskan modul bekerja seperti apa sampai detail tombol, field, validasi, workflow, dan permission.
+Dokumen ini merupakan kerangka awal. Versi lengkap akan memuat spesifikasi rinci berdasarkan requirement Marketing Hub yang telah disepakati.
+
+FSD-001
+Lead Management Module
+Tujuan
+Menjadi pusat pengelolaan seluruh lead marketing.
+Modul ini menjadi sumber data utama untuk:
+* Funnel 
+* BDR Activity 
+* Dashboard 
+* Campaign Attribution 
+* Portal Conversion 
+
+1. Menu Structure
+Marketing Hub
+??? Lead Management
+      ??? All Leads
+      ??? My Leads
+      ??? New Lead
+      ??? Import Lead
+      ??? Duplicate Review
+      ??? Lead Archive
+
+2. Lead Lifecycle
+Lead Created
+    ?
+Assigned to BDR
+    ?
+Activity Recorded
+    ?
+Qualified
+    ?
+MQL
+    ?
+SQL
+    ?
+Opportunity
+    ?
+Won / Lost
+
+atau
+
+Exited
+
+3. Lead List Page
+URL
+/lead
+
+Tujuan
+Menampilkan seluruh lead yang dapat diakses user.
+
+Grid Columns
+FieldVisibleLead IDYesCompanyYesContact NameYesEmailYesPhoneYesProduct InterestYesSourceYesLead OwnerYesAssigned SalesYesFunnel StageYesLead StatusYesTemperatureYesLast ActivityYesAgingYesCreated DateYes
+Sorting
+Default:
+Newest First
+
+Filter
+Funnel
+Lead
+MQL
+SQL
+Opportunity
+Won
+Lost
+Exited
+
+Product
+DCloud
+DTrust
+DCode
+DInfra
+
+Source
+Portal
+Google Ads
+SEO
+Referral
+Webinar
+Workshop
+LinkedIn
+Database Internal
+
+Lead Owner
+Dropdown.
+
+Assigned Sales
+Dropdown.
+
+Date Range
+Created Date
+Last Activity
+
+4. Create Lead
+Permission
+Owner
+Manager
+Admin
+BDR
+
+Form Layout
+Section A
+Company Information
+FieldRequiredCompany NameYesIndustryNoCompany SizeNoWebsiteNoCityNo
+Duplicate Company Check
+Saat user mengetik:
+PT Daya Cipta
+Sistem mencari:
+PT Daya Cipta
+PT Daya Cipta Indonesia
+PT Daya Cipta Teknologi
+
+Jika ditemukan:
+Popup:
+Kemungkinan perusahaan yang sama ditemukan.
+
+( ) Gunakan perusahaan yang sudah ada
+
+( ) Buat perusahaan baru
+
+Section B
+Contact Information
+FieldRequiredFull NameYesEmailYesPhoneYesJob TitleNoSeniorityNoLinkedInNo
+Duplicate Contact Check
+Email unik.
+Phone unik.
+
+Jika ditemukan:
+Popup:
+Contact sudah ada.
+
+Lihat Contact Existing?
+
+Section C
+Lead Information
+FieldRequiredLead SourceYesLead OwnerYesLead CreatorAutoProduct InterestYesNotesNo
+Product Interest
+Multi Select
+Contoh:
+? DCloud
+? DTrust
+? DCode
+? DInfra
+
+5. Import Lead
+Permission
+Admin
+
+Format
+CSV
+XLSX
+
+Import Validation
+Email
+Wajib unik.
+
+Phone
+Wajib unik.
+
+Duplicate Result
+Setelah import:
+100 Data Import
+
+95 Success
+5 Duplicate
+
+Klik:
+Review Duplicate
+
+6. Lead Detail Page
+URL
+/lead/{lead_id}
+
+Header
+Menampilkan:
+Lead ID
+Company
+Contact
+Current Funnel
+Lead Owner
+Assigned Sales
+
+Tab 1
+Overview
+
+Menampilkan:
+Company
+Contact
+Product Interest
+Sources
+Funnel Summary
+
+Tab 2
+Activities
+Menampilkan timeline.
+Contoh:
+15 Jun
+Call
+Not Connected
+
+17 Jun
+Call
+Meeting Scheduled
+
+20 Jun
+Meeting
+Qualified
+
+Tab 3
+Funnel History
+Contoh:
+Lead ? MQL
+
+MQL ? SQL
+
+Tab 4
+Approval History
+
+Tab 5
+Related Contacts
+Karena satu company bisa banyak contact.
+
+Tab 6
+Related Leads
+Menampilkan:
+Lead lain dari perusahaan yang sama
+
+7. Lead Assignment
+Transfer Lead
+Permission:
+Admin
+Manager
+Owner
+
+Workflow:
+Lead Owner A
+?
+Transfer Request
+?
+Manager Approval
+?
+Lead Owner B
+
+Audit Trail wajib dibuat.
+
+8. Lead Status Engine
+Status operasional.
+StatusMeaningNewBaru dibuatAttempting ContactSedang dihubungiConnectedBerhasil terhubungNurturingMasih diprosesQualifiedLayak MQLHanded To SalesSQLDormantTidak aktifExitedKeluar funnel
+9. Aging Calculation
+Aging dihitung:
+Today
+-
+Last Meaningful Activity
+
+Warna:
+HariWarna0-7Hijau8-14Kuning>14Merah
+10. Lead Score (Versi 2)
+Belum digunakan di MVP.
+Disiapkan field.
+Lead Score
+0-100
+
+11. Notifications
+Jika:
+Lead Assigned
+Notifikasi muncul.
+
+Approval Needed
+Notifikasi muncul.
+
+Follow Up Due
+Notifikasi muncul.
+
+12. Dashboard Dependency
+Modul ini mengirim data ke:
+Executive Dashboard
+BDR Dashboard
+Marketing Dashboard
+Portal Dashboard
+
+13. Audit Trail
+Setiap perubahan berikut WAJIB dicatat:
+* Lead Owner berubah 
+* Assigned Sales berubah 
+* Funnel berubah 
+* Product Interest berubah 
+* Lead Source berubah 
+* Status berubah 
+
+14. Soft Delete
+Tidak boleh hard delete.
+Field:
+is_deleted
+atau
+record_status
+
+15. Acceptance Criteria
+Create Lead
+? Lead tersimpan
+? Company dibuat atau direlasikan
+? Contact dibuat atau direlasikan
+? Lead ID otomatis
+? Audit Trail dibuat
+
+Duplicate Detection
+? Email terdeteksi
+? Phone terdeteksi
+? Company Similarity terdeteksi
+
+Assignment
+? Transfer membutuhkan approval
+? Histori tersimpan
+
+Activity
+? Semua aktivitas tampil timeline
+
+
+
+FSD-002
+Lead Activity Management
+Tujuan
+Mencatat seluruh aktivitas yang dilakukan terhadap lead.
+Prinsip utama:
+Jika aktivitas tidak tercatat di sistem, maka aktivitas dianggap tidak pernah terjadi.
+
+1. Menu Structure
+Lead Management
+??? Activities
+atau
+Lead Detail
+??? Tab Activities
+Aktivitas tidak memiliki menu utama sendiri.
+Selalu terkait ke Lead.
+
+2. Activity Lifecycle
+Lead
+?
+Activity
+?
+Outcome
+?
+Next Action
+?
+Follow Up
+?
+Funnel Movement
+
+3. Activity Types
+V1 (MVP)
+Activity TypeKeteranganCallTeleponWhatsAppChat WAEmailEmailLinkedInLinkedIn MessageMeeting OnlineGoogle Meet / ZoomMeeting OfflineTatap mukaPortal Follow UpFollow up portalEvent Follow UpFollow up eventInternal NoteCatatan internalOtherLainnya
+4. Activity Outcome Dictionary
+CALL
+Tidak Terhubung
+Not Connected
+Busy
+Rejected
+Wrong Number
+No Answer
+Voicemail
+
+Berhasil Terhubung
+Connected
+Lalu user wajib memilih outcome lanjutan.
+
+QUALIFICATION OUTCOME
+Interested
+Need More Information
+Meeting Scheduled
+Meeting Rescheduled
+Ask Company Profile
+Ask Proposal
+Ask Trial
+Need Internal Discussion
+No Budget
+No Authority
+No Need
+Already Using Competitor
+Do Not Contact
+
+5. Add Activity
+Permission
+Owner
+Manager
+Admin
+BDR
+
+Button
++ Add Activity
+
+Form
+Section A
+Activity Information
+FieldRequiredActivity DateYesActivity TypeYesOutcomeYesNotesYesNext ActionNoFollow Up DateNo
+Section B
+Call Information
+Muncul hanya jika:
+Activity Type = Call
+
+FieldRequiredCall DurationNoCall ResultYes
+6. Smart Follow Up Engine
+Jika outcome:
+Interested
+Sistem menyarankan:
+Next Action:
+Send Company Profile
+
+Jika outcome:
+Meeting Scheduled
+Sistem menyarankan:
+Create Meeting Reminder
+
+Jika outcome:
+Ask Trial
+Sistem menyarankan:
+Send Trial Information
+
+7. Activity Timeline
+Lead Detail
+Tab:
+Activities
+
+Urutan:
+Newest First
+
+Contoh:
+23 Jun 2026
+
+Call
+Outcome:
+Interested
+
+Created by:
+BDR A
+
+Notes:
+Membutuhkan cloud backup solution
+
+Follow Up:
+26 Jun 2026
+
+8. Follow Up Management
+My Follow Up
+Menu baru:
+My Tasks
+??? Follow Up
+
+Menampilkan:
+LeadFollow Up DateStatusPT ABC24 JunDuePT XYZ25 JunUpcoming
+9. Overdue Follow Up
+Jika:
+Today > Follow Up Date
+Status:
+Overdue
+
+Dashboard:
+My Overdue Follow Up
+
+10. Activity Attachment
+MVP
+Tidak perlu attachment.
+Sesuai keputusan sebelumnya.
+
+Future
+Bisa ditambahkan:
+Proposal
+Quotation
+Company Profile
+Meeting Recording
+
+11. Auto Status Recommendation
+Sistem memberi rekomendasi.
+Contoh:
+
+Outcome:
+Meeting Scheduled
+Rekomendasi:
+Lead Status:
+Connected
+
+Outcome:
+Interested
+Rekomendasi:
+Lead Status:
+Nurturing
+
+Outcome:
+Need + Authority + Timeline terkonfirmasi
+Rekomendasi:
+Move to MQL
+
+12. BANT Tracking
+Sesuai keputusan kita:
+Tidak dibuat field khusus.
+Disimpan pada:
+Activity Notes
+
+Contoh:
+Budget:
+100 juta
+
+Authority:
+IT Manager
+
+Need:
+Backup Solution
+
+Timeline:
+Q3 2026
+
+13. Activity Dashboard Metrics
+Per User
+KPITotal CallsConnected CallsMeeting ScheduledMQL GeneratedSQL Generated
+Team KPI
+KPITotal ActivityTotal Follow UpTotal ConnectedTotal Meetings
+14. Activity Audit Trail
+Setiap perubahan:
+Edit Activity
+Delete Activity
+harus dicatat.
+
+15. Delete Rules
+Tidak boleh hard delete.
+
+Status:
+is_deleted = TRUE
+
+16. Acceptance Criteria
+Add Activity
+? Aktivitas tersimpan
+? Timeline bertambah
+? Audit Trail dibuat
+
+Follow Up
+? Reminder muncul
+? Overdue terdeteksi
+
+Dashboard
+? KPI terhitung
+
+Lead Relation
+? Semua aktivitas terkait lead
+
+
+
+FSD-003
+Funnel Management Module
+Tujuan
+Mengelola perjalanan lead dari awal masuk hingga menjadi customer atau keluar dari funnel.
+Funnel menjadi standar resmi pengukuran performa marketing.
+
+1. Funnel Definition
+Sesuai hasil diskusi kita:
+Lead
+?
+MQL
+?
+SQL
+?
+Opportunity
+?
+Closed Won
+atau
+Closed Lost
+Alternatif:
+Lead
+?
+MQL
+?
+Exited
+atau
+SQL
+?
+Exited
+
+2. Funnel Principles
+Principle #1
+Lead hanya memiliki:
+1 Current Funnel Stage
+
+Principle #2
+Semua perpindahan stage harus tercatat.
+
+Principle #3
+Tidak boleh update langsung.
+Harus melalui:
+Move Funnel Action
+
+Principle #4
+Semua perubahan membuat histori.
+
+3. Funnel Stage Definition
+LEAD
+Definisi:
+Data baru masuk.
+Contoh:
+Import Database
+Portal Register
+Webinar
+Workshop
+Referral
+
+Owner
+BDR
+
+KPI
+Total Lead
+
+MQL
+Definisi
+Lead sudah memenuhi syarat minimum.
+
+Minimal:
+Ada kebutuhan
+Ada kontak valid
+Ada potensi bisnis
+
+BANT
+Tidak wajib lengkap.
+Namun cukup informasi untuk menyatakan:
+Layak ditindaklanjuti
+
+Owner
+BDR
+
+KPI
+Total MQL
+Lead ? MQL Conversion
+
+SQL
+Definisi
+Lead siap diserahkan ke Sales.
+
+Minimal:
+Need terkonfirmasi
+Authority diketahui
+Timeline diketahui
+
+Atau berdasarkan keputusan Manager.
+
+Owner
+Sales
+
+KPI
+Total SQL
+MQL ? SQL Conversion
+
+OPPORTUNITY
+Definisi
+Sales telah menyatakan:
+Opportunity Created
+Biasanya ditandai:
+Quotation dikirim
+
+Karena sales menggunakan sistem lain:
+Status ini akan diupdate manual.
+
+Owner
+Sales
+
+KPI
+Total Opportunity
+Pipeline Value
+
+CLOSED WON
+Definisi:
+Menjadi customer.
+
+KPI
+Revenue
+Won Count
+Win Rate
+
+CLOSED LOST
+Definisi:
+Opportunity gagal menjadi customer.
+
+KPI
+Lost Count
+Loss Reason
+
+EXITED
+Definisi:
+Lead keluar dari funnel sebelum menjadi customer.
+
+Contoh:
+No Need
+Do Not Contact
+Student
+Competitor
+Invalid Lead
+
+Wajib approval.
+
+4. Funnel Movement Matrix
+FromToAllowedLeadMQLYesMQLSQLYesSQLOpportunityYesOpportunityWonYesOpportunityLostYesLeadExitedYesMQLExitedYesSQLExitedYes
+Tidak boleh:
+FromToLeadOpportunityLeadWonMQLWon
+5. Move Stage Button
+Pada Lead Detail:
+Move Stage
+
+Contoh:
+Current:
+Lead
+
+Pilihan:
+Move to MQL
+Exit Funnel
+
+6. Lead ? MQL Workflow
+Permission
+BDR
+Admin
+Manager
+Owner
+
+Form
+Saat klik:
+Move to MQL
+
+Muncul:
+FieldRequiredReasonYesSummaryYes
+Contoh
+Sudah terhubung.
+Ada kebutuhan backup solution.
+Minta presentasi.
+
+7. MQL ? SQL Workflow
+Permission
+BDR
+Admin
+Manager
+Owner
+
+Form
+FieldRequiredAssigned SalesYesQualification NotesYes
+Setelah submit:
+Assigned Sales
+Notifikasi Sales
+Create History
+
+8. SQL ? Opportunity Workflow
+Permission
+Sales
+Admin
+Manager
+Owner
+
+Form
+FieldRequiredOpportunity NameYesEstimated ValueYesQuotation DateYes
+Contoh:
+DCloud Backup Solution
+Rp 120.000.000
+
+9. Multiple Opportunity Support
+Ini penting karena requirement Anda.
+
+Contoh:
+PT ABC
+punya:
+Opty A
+Backup
+100 juta
+
+Opty B
+Disaster Recovery
+300 juta
+
+Maka dibuat entity:
+Trx_Opportunity
+
+Bukan hanya field di Lead.
+
+Menurut saya ini wajib.
+
+10. Opportunity Entity
+Trx_Opportunity
+Fieldopportunity_idlead_idopportunity_nameproductestimated_valuestatuscreated_date
+Status:
+Open
+Won
+Lost
+
+11. Won Workflow
+Permission
+Sales
+Admin
+Manager
+Owner
+
+Form:
+FieldRequiredActual ValueYesWon DateYes
+12. Lost Workflow
+Permission
+Sales
+Admin
+Manager
+Owner
+
+Form:
+FieldRequiredLost ReasonYesNotesNo
+13. Lost Reason Dictionary
+Saya sarankan:
+Price
+Competitor
+No Budget
+Project Cancelled
+Internal Priority
+No Response
+Technical Limitation
+Other
+
+14. Exit Funnel Workflow
+Permission
+Request
+BDR
+Admin
+Manager
+
+Approve
+Manager
+Owner
+
+Workflow:
+Request Exit
+?
+Approval
+?
+Approved
+?
+Exited
+
+15. Exit Reason Dictionary
+Saya sarankan:
+No Need
+Do Not Contact
+Student
+Vendor
+Competitor
+Fake Lead
+Invalid Contact
+Duplicate Lead
+Other
+
+16. Funnel History
+Semua movement wajib masuk:
+Trx_Funnel_History
+Fieldhistory_idlead_idfrom_stageto_stagemovement_dateusernotes
+Contoh:
+Lead
+?
+MQL
+
+By:
+BDR A
+
+Date:
+23 Jun 2026
+
+17. Funnel Aging
+Lead Aging
+Today
+-
+Lead Created Date
+
+Stage Aging
+Today
+-
+Entered Stage Date
+
+Contoh:
+SQL
+
+15 Hari
+
+Dashboard harus bisa menampilkan ini.
+
+18. Funnel Conversion Metrics
+Lead ? MQL
+MQL
+÷
+Lead
+
+MQL ? SQL
+SQL
+÷
+MQL
+
+SQL ? Opty
+Opportunity
+÷
+SQL
+
+Opty ? Won
+Won
+÷
+Opportunity
+
+19. Pipeline Value
+Dihitung dari:
+Total Open Opportunity
+
+Contoh:
+100 juta
++
+200 juta
++
+300 juta
+=
+600 juta
+
+20. Dashboard Dependency
+Modul Funnel akan menjadi sumber data untuk:
+Executive Dashboard
+* Total Lead 
+* Total MQL 
+* Total SQL 
+* Total Opty 
+* Total Won 
+
+BDR Dashboard
+* MQL Generated 
+* SQL Generated 
+
+Sales Dashboard
+* Opty 
+* Won 
+* Lost 
+
+21. Acceptance Criteria
+Move Stage
+? Validasi permission
+? Histori tercatat
+? Dashboard update
+
+Exit Funnel
+? Approval wajib
+? Histori wajib
+
+Opportunity
+? Multiple opportunity per lead didukung
+? Pipeline value terhitung
+
+Conversion
+? Semua conversion rate otomatis terhitung
+
+Catatan Penting
+Saat membuat FSD ini, saya menemukan satu perubahan desain yang menurut saya harus kita lakukan sebelum coding:
+Saat ini ERD kita masih menganggap:
+Lead
+?
+Opportunity
+sebagai field status.
+Padahal requirement menyebut:
+Satu lead bisa menghasilkan lebih dari satu opportunity.
+Artinya pada Tahap 2 nanti ERD harus direvisi menjadi:
+Lead
+?
+??? Activity
+??? Funnel History
+??? Opportunity
+       ??? Won
+       ??? Lost
+Sehingga Opportunity menjadi entitas tersendiri, bukan sekadar status. Ini jauh lebih sesuai dengan praktik CRM/ERP profesional dan akan menghindari redesign besar di masa depan.
+
+
+FSD-004
+Approval Center Module
+Tujuan
+Mengelola seluruh proses approval dalam Marketing Hub.
+
+1. Approval Philosophy
+Approval bukan fitur.
+Approval adalah service.
+Artinya:
+Lead
+Project
+Cost
+Opportunity
+Portal
+semuanya bisa menggunakan Approval Center.
+
+2. Menu Structure
+Approval Center
+??? My Approval
+??? Pending Approval
+??? Approved
+??? Rejected
+??? Approval History
+
+3. Approval Types
+Versi MVP:
+TypeKeteranganEXIT_FUNNELKeluarkan leadTRANSFER_LEAD_OWNERPindah BDRTRANSFER_SALES_OWNERPindah SalesREOPEN_LEADAktifkan kembali leadPROJECT_CLOSETutup project
+Desain harus memungkinkan penambahan approval type baru.
+
+4. Approval Entity
+Trx_Approval
+Fieldapproval_idapproval_typereference_idrequested_byrequested_dateassigned_approverapproval_statusapproval_dateapproval_notes
+Contoh:
+approval_id:
+APR-000001
+
+approval_type:
+EXIT_FUNNEL
+
+reference_id:
+LED-000234
+
+5. Approval Status
+StatusPendingApprovedRejectedCancelled
+6. Approval Request Flow
+Generic Flow
+Request
+?
+Pending
+?
+Approved / Rejected
+
+7. Exit Funnel Approval
+Trigger
+User klik:
+Exit Funnel
+
+Muncul form:
+FieldRequiredExit ReasonYesNotesYes
+Submit:
+Create Approval
+Status Pending
+
+Lead belum keluar funnel.
+
+8. Approval Queue
+My Approval
+Menampilkan approval yang harus diproses user.
+
+Contoh:
+TypeObjectRequested ByExit FunnelPT ABCBDR ATransfer LeadPT XYZAdmin
+9. Approval Detail Page
+Menampilkan:
+Request Information
+FieldApproval IDRequest TypeRequest DateRequested By
+Object Information
+Misal:
+Lead:
+PT ABC
+
+Reason
+Tidak memiliki kebutuhan.
+Meminta tidak dihubungi lagi.
+
+10. Approve Action
+Permission:
+Manager
+Owner
+
+Button:
+Approve
+
+Saat approve:
+Approval Status
+?
+Approved
+
+Eksekusi action asli.
+Contoh:
+Lead
+?
+Exited
+
+11. Reject Action
+Permission:
+Manager
+Owner
+
+Button:
+Reject
+
+Field:
+FieldRequiredRejection ReasonYes
+12. Approval Assignment Engine
+MVP
+Approval langsung ke:
+Manager
+
+Jika tidak ada manager:
+Owner
+
+Future
+Bisa configurable.
+
+13. Approval Notification
+Ketika approval dibuat:
+Dashboard notification:
+1 Approval Pending
+
+Ketika approval diproses:
+Requester mendapat notifikasi.
+
+14. Transfer Lead Owner Approval
+Trigger
+Admin klik:
+Transfer Lead
+
+Form:
+FieldRequiredCurrent OwnerAutoNew OwnerYesReasonYes
+Workflow:
+Request
+?
+Manager
+?
+Approve
+?
+Owner berubah
+
+15. Reopen Lead Approval
+Contoh:
+Exited
+?
+Active kembali
+
+Harus approval.
+
+16. Approval History
+Tab baru:
+Approval History
+
+Menampilkan:
+DateAction23 JunRequest24 JunApproved
+17. Audit Trail
+Semua approval wajib membuat audit log.
+
+Trx_Audit_Log
+Contoh:
+User:
+Manager A
+
+Action:
+APPROVE_EXIT_FUNNEL
+
+Reference:
+LED-000123
+
+18. Dashboard Metrics
+Executive Dashboard:
+KPIPending ApprovalApproved TodayRejected Today
+19. Security Rules
+Requester tidak boleh approve request sendiri.
+
+Contoh:
+BDR A
+Request Exit
+
+Tidak boleh:
+BDR A
+Approve Exit
+
+20. Acceptance Criteria
+Request
+? Approval tercipta
+? Status Pending
+
+Approve
+? Status berubah
+? Action dijalankan
+? Histori tercatat
+
+Reject
+? Status berubah
+? Alasan tersimpan
+
+
+FSD-005
+Dashboard & Analytics Module
+Tujuan
+Menyediakan informasi real-time mengenai performa marketing, BDR, lead funnel, portal, dan workload tim.
+
+Dashboard Philosophy
+Saya merekomendasikan:
+1 User
+=
+1 Dashboard
+Artinya:
+Owner melihat dashboard berbeda dengan BDR.
+Manager melihat dashboard berbeda dengan Digital Marketing.
+
+Dashboard Structure
+Dashboard
+??? Executive Dashboard
+??? Marketing Dashboard
+??? BDR Dashboard
+??? Digital Marketing Dashboard
+??? Project Dashboard
+??? Personal Dashboard
+
+Dashboard Performance Rule
+Penting.
+Dashboard tidak boleh menghitung langsung dari:
+Trx_Lead
+Trx_Activity
+Trx_Opportunity
+karena nanti lambat.
+Gunakan:
+Rpt_Dashboard_Cache
+yang di-refresh otomatis.
+
+Dashboard Refresh Engine
+Scheduled Trigger
+Setiap:
+15 menit
+untuk MVP.
+
+Update:
+Lead KPI
+Activity KPI
+Funnel KPI
+Portal KPI
+Project KPI
+
+1. Executive Dashboard
+Target User
+Owner
+Manager
+
+KPI Card
+Baris pertama:
+KPITotal LeadTotal MQLTotal SQLTotal OpportunityTotal Won
+Contoh:
+Lead        12.500
+MQL          4.200
+SQL          1.800
+Opty           850
+Won            230
+
+Funnel Visualization
+Widget:
+Lead
+?
+MQL
+?
+SQL
+?
+Opty
+?
+Won
+
+Tampilkan:
+StageCountLead12.500MQL4.200SQL1.800Opty850Won230
+Conversion Rate
+MetricLead ? MQLMQL ? SQLSQL ? OptyOpty ? Won
+Contoh:
+Lead ? MQL
+33.6%
+
+MQL ? SQL
+42.8%
+
+Pipeline Value
+Dari:
+Open Opportunity
+
+Contoh:
+Rp 2.8 Miliar
+
+Won Revenue
+Contoh:
+Rp 950 Juta
+
+Lost Opportunity
+Contoh:
+Total Lost
+
+120
+
+Lost Reason Analysis
+Top 10.
+Contoh:
+Price
+Competitor
+No Budget
+
+2. Marketing Dashboard
+Target User
+Manager
+Marketing Specialist
+
+Lead Source Performance
+SourceLeadWebinar200Workshop100Portal800Google Ads500
+Lead Source Conversion
+Contoh:
+SourceSQLWebinar25Portal50Ads80
+Product Interest
+Menampilkan:
+DCloud
+DTrust
+DCode
+DInfra
+
+Contoh:
+ProductCountDCloud400DTrust250DCode100DInfra150
+Campaign Attribution
+Versi 1 sederhana.
+Contoh:
+CampaignLeadsWebinar Juni200Google Ads A150
+3. BDR Dashboard
+Target User
+BDR
+Manager
+
+KPI Personal
+KPIAssigned LeadsActive LeadsMQL GeneratedSQL GeneratedCalls Today
+Daily Activity
+KPICallWAEmailMeeting
+Follow Up Due
+Menampilkan:
+Follow Up Hari Ini
+
+Overdue Follow Up
+Menampilkan:
+Belum Ditindaklanjuti
+
+Funnel Generated
+Contoh:
+Lead ? MQL
+15
+
+MQL ? SQL
+8
+
+Ranking BDR
+Owner bisa melihat.
+Contoh:
+BDRSQLBDR A25BDR B18
+4. Digital Marketing Dashboard
+Target User
+Digital Marketing Specialist
+
+Google Ads KPI
+(dari integrasi API)
+KPISpendClickCTRCPCConversion
+Portal Registration
+KPITotal RegisterVerifiedUnverified
+Register Source
+SourceOrganicGoogle AdsReferral
+SEO KPI
+Dari integrasi Google Search Console.
+
+Contoh:
+KPIClickImpressionCTRAverage Position
+Keyword Ranking
+Top keyword.
+
+5. Project Dashboard
+Target User
+Marketing Specialist
+Manager
+Owner
+
+Active Project
+Contoh:
+12 Project
+
+Project Status
+StatusPlanningIn ProgressOn HoldDone
+Workload Per User
+Contoh:
+UserTaskA15B8
+Overdue Project
+Menampilkan:
+Project lewat target
+
+6. Personal Dashboard
+Semua User
+
+My Tasks
+Menampilkan:
+Task saya
+
+My Follow Up
+Menampilkan:
+Follow Up saya
+
+My Leads
+Menampilkan:
+Lead milik saya
+
+My Notifications
+Menampilkan:
+Approval
+Reminder
+Mention
+
+Global Filter Engine
+Semua dashboard harus memiliki:
+
+Date Filter
+Today
+This Week
+This Month
+This Quarter
+This Year
+Custom
+
+Product Filter
+DCloud
+DTrust
+DCode
+DInfra
+
+Source Filter
+Portal
+Ads
+Event
+Referral
+
+Export
+Semua dashboard bisa:
+Export Excel
+Export PDF
+
+Dashboard Security
+Owner
+Melihat semua data.
+
+Manager
+Melihat seluruh tim.
+
+BDR
+Hanya lead miliknya.
+
+Digital Marketing
+Tidak melihat data sensitif sales.
+
+Dashboard Cache Tables
+Saya sarankan dari awal siapkan:
+Rpt_Dashboard_Executive
+Rpt_Dashboard_BDR
+Rpt_Dashboard_Marketing
+Rpt_Dashboard_Digital
+Rpt_Dashboard_Project
+
+Acceptance Criteria
+Executive Dashboard
+? Funnel tampil
+? Conversion tampil
+? Pipeline tampil
+
+BDR Dashboard
+? Follow up tampil
+? KPI tampil
+
+Digital Dashboard
+? Ads tampil
+? SEO tampil
+? Portal tampil
+
+Personal Dashboard
+? Task tampil
+? Notifikasi tampil
+
+
+
+
+FSD-006
+Portal Performance Module
+Tujuan
+Mengukur performa portal DCloud sebagai channel akuisisi lead.
+
+Portal Definition
+Portal:
+DCloud Portal
+Sumber data:
+Manual Import
+karena saat ini data diambil berkala.
+
+Future Version
+API Integration
+
+1. Menu Structure
+Portal Performance
+
+??? Dashboard
+??? Registration
+??? Verification
+??? Conversion
+??? Import Data
+??? Analytics
+
+2. Portal Data Lifecycle
+Register Portal
+?
+Verified
+?
+Lead Created
+?
+Assigned BDR
+?
+MQL
+?
+SQL
+?
+Opportunity
+?
+Won
+
+3. Registration Entity
+Trx_Portal_Register
+Fieldregister_idregister_datefull_nameemailphonecompanysourceverification_statuslead_idnotes
+4. Unique Rules
+Email
+Wajib unik.
+
+Jika ditemukan email sama:
+Tidak membuat register baru.
+
+Munculkan:
+Data sudah pernah register.
+
+5. Registration Status
+StatusNewVerifiedRejectedConverted To Lead
+6. Import Portal Data
+Permission
+Admin
+Owner
+
+Format
+CSV
+XLSX
+
+Upload Flow
+Upload File
+?
+Validation
+?
+Preview
+?
+Import
+
+7. Import Validation
+Required Field
+FieldEmailName
+Duplicate Check
+Berdasarkan:
+Email
+
+Result:
+100 Record
+
+95 Imported
+5 Duplicate
+
+8. Verification Management
+Tujuan
+Membedakan:
+Register valid
+Register spam
+Register test
+
+Verification Status
+StatusVerifiedUnverifiedRejected
+Permission
+Admin
+Manager
+
+9. Convert To Lead
+Ini fitur paling penting.
+
+Button:
+Convert To Lead
+
+Workflow:
+Portal Register
+?
+Create Lead
+?
+Assign BDR
+?
+Create Lead History
+
+10. Auto Duplicate Detection
+Saat convert:
+Cari:
+Email
+Phone
+
+Jika ditemukan:
+Popup:
+Lead sudah ada.
+
+Gabungkan source?
+
+Pilihan:
+Ya
+Tidak
+
+11. Multi Source Support
+Ini requirement penting dari Anda.
+
+Contoh:
+Contact:
+budi@abc.com
+
+Source pertama:
+Webinar
+
+Source kedua:
+Portal
+
+Source ketiga:
+Google Ads
+
+Maka source tidak boleh berupa satu field.
+Harus dibuat:
+Trx_Lead_Source
+Fieldsource_idlead_idsource_typesource_namesource_date
+Contoh:
+LED-001
+
+Webinar
+Portal
+Ads
+
+12. Portal Dashboard
+KPI Cards
+KPITotal RegisterVerifiedUnverifiedConverted To LeadConverted To MQLConverted To SQL
+13. Portal Funnel
+Visualisasi:
+Register
+?
+Verified
+?
+Lead
+?
+MQL
+?
+SQL
+?
+Won
+
+Contoh:
+1.000 Register
+
+800 Verified
+
+300 Lead
+
+120 MQL
+
+40 SQL
+
+8 Won
+
+14. Conversion Rate
+Register ? Lead
+Lead
+÷
+Register
+
+Lead ? MQL
+MQL
+÷
+Lead
+
+SQL ? Won
+Won
+÷
+SQL
+
+15. Registration Source Analysis
+Karena register bisa berasal dari:
+Organic
+Google Ads
+Referral
+Direct
+
+Dashboard:
+SourceRegisterOrganic500Ads300Referral100
+16. Product Interest
+Portal dapat menyimpan:
+ProductDCloudDTrustDCodeDInfra
+Multi Select.
+
+17. Lead Correlation
+Pada halaman register.
+Munculkan:
+Related Lead
+
+Contoh:
+LED-000234
+
+Klik:
+Open Lead
+
+18. Registration Aging
+New Register
+Belum ditindaklanjuti.
+
+Hitung:
+Hari sejak register
+
+Contoh:
+HariStatus0-3Hijau4-7Kuning>7Merah
+19. Portal Analytics
+Filter:
+Date
+Source
+Product
+Verification Status
+
+Laporan:
+Register per Hari
+Register per Bulan
+Register per Source
+Register per Product
+Register per Funnel Stage
+
+20. Dashboard Integration
+Portal menjadi sumber data:
+Executive Dashboard
+Menampilkan:
+Portal Contribution
+
+Contoh:
+SQL dari Portal
+
+40%
+
+Marketing Dashboard
+Menampilkan:
+Portal Growth
+
+21. Security Rules
+BDR hanya melihat register yang sudah menjadi lead miliknya.
+
+Admin melihat semua.
+
+Owner melihat semua.
+
+22. Acceptance Criteria
+Import
+? Validasi email
+? Duplicate detection
+
+Verification
+? Status tersimpan
+
+Convert Lead
+? Lead dibuat
+? Source tersimpan
+? Histori tersimpan
+
+Analytics
+? Funnel portal tampil
+? Conversion tampil
+
+Catatan Arsitektur Penting
+Saat menyusun FSD Portal ini, muncul satu kebutuhan data model yang menurut saya wajib masuk ke ERD final:
+Master Company
+1 Company
+?
+N Contacts
+?
+N Leads
+?
+N Sources
+Artinya kita tidak boleh lagi menyimpan source langsung di tabel lead sebagai satu kolom.
+Karena requirement sudah jelas:
+1 lead bisa berasal dari:
+- Webinar
+- Portal
+- Google Ads
+- Referral
+- Event
+Maka secara ERP/CRM best practice, kita perlu tabel relasi:
+Trx_Lead_Source
+yang akan dipakai oleh:
+* Lead Management 
+* Portal Performance 
+* Campaign Management 
+* Dashboard Attribution
+
+
+FSD-007
+Campaign Management Module
+Tujuan
+Mengelola seluruh aktivitas marketing campaign dan mengukur kontribusinya terhadap funnel marketing.
+
+Campaign Philosophy
+Campaign bukan sekadar aktivitas.
+Campaign adalah:
+Sumber Lead
+yang harus bisa ditelusuri hingga:
+Lead
+?
+MQL
+?
+SQL
+?
+Opportunity
+?
+Won
+
+1. Menu Structure
+Campaign Management
+
+??? Dashboard
+??? Campaign List
+??? Create Campaign
+??? Campaign Calendar
+??? Campaign Performance
+??? Campaign Archive
+
+2. Campaign Types
+Versi 1:
+TypeWebinarWorkshopGoogle AdsLinkedIn CampaignEmail MarketingSEO ProgramReferral ProgramEvent ExhibitionInternal CampaignOther
+3. Campaign Entity
+Trx_Campaign
+Fieldcampaign_idcampaign_namecampaign_typebrandobjectivestart_dateend_dateownerbudgetstatus
+Contoh:
+CMP-000001
+
+Webinar Cloud Security Juli
+
+Type:
+Webinar
+
+Brand:
+DCloud
+
+4. Campaign Status
+StatusDraftPlannedActiveCompletedCancelled
+5. Campaign Creation
+Permission
+Owner
+Manager
+Marketing Specialist
+
+Form
+General Information
+FieldRequiredCampaign NameYesTypeYesBrandYesOwnerYesObjectiveYes
+Timeline
+FieldRequiredStart DateYesEnd DateYes
+Budget
+FieldRequiredPlanned BudgetNoActual BudgetNo
+6. Brand Selection
+Sesuai requirement.
+Multi-brand support.
+BrandDCloudDTrustDCodeDInfra
+Campaign dapat mendukung lebih dari satu brand.
+
+Contoh:
+Workshop Cyber Security
+
+Brand:
+DCloud
+DTrust
+
+7. Campaign Lead Attribution
+Bagian terpenting.
+
+Lead yang berasal dari campaign harus tercatat.
+
+Contoh:
+Campaign:
+Webinar Juli
+
+?
+
+Lead A
+Lead B
+Lead C
+
+Maka dibuat relasi:
+Trx_Lead_Source
+Fieldsource_idlead_idsource_typesource_referencesource_date
+Contoh:
+source_type:
+Campaign
+
+source_reference:
+CMP-000001
+
+8. Campaign Dashboard
+KPI Card
+KPITotal CampaignActive CampaignTotal LeadsTotal MQLTotal SQL
+9. Campaign Funnel
+Per Campaign.
+
+Contoh:
+Webinar Cloud Security
+Menampilkan:
+StageCountLead150MQL40SQL15Opty6Won2
+10. Campaign ROI
+Versi 1 sederhana.
+
+Formula:
+Revenue Won
+-
+Campaign Cost
+
+Contoh:
+Revenue
+
+Rp 200.000.000
+
+Cost
+
+Rp 20.000.000
+
+ROI:
+10x
+
+11. Campaign Cost Tracking
+Terhubung ke:
+Marketing Cost Module
+
+Campaign dapat memiliki:
+Ads Cost
+Venue Cost
+Speaker Cost
+Agency Cost
+Design Cost
+
+12. Campaign Calendar
+Menampilkan campaign berdasarkan kalender.
+
+View:
+Month
+Week
+
+Contoh:
+10 Juli
+Workshop
+
+15 Juli
+Webinar
+
+25 Juli
+Google Ads Launch
+
+13. Google Ads Integration
+Versi 1:
+Manual Input.
+
+Versi 2:
+Integrasi:
+Google Ads
+
+Data yang ditarik:
+KPISpendClickCTRCPCConversion
+14. SEO Campaign
+Karena Anda ingin tracking SEO.
+Campaign type:
+SEO Program
+
+Contoh:
+SEO Q3 2026
+
+Target:
+Keyword Ranking
+Organic Traffic
+
+15. Campaign Performance Report
+Filter:
+Date
+Campaign
+Brand
+Type
+
+Menampilkan:
+KPILeadsMQLSQLOptyWon
+16. Top Campaign Ranking
+Contoh:
+CampaignSQLWebinar Cloud25Ads Search18Workshop DR12
+17. Campaign Owner KPI
+Menampilkan:
+UserCampaignMarketing A8Marketing B4
+18. Campaign Detail Page
+Tab Overview
+Informasi campaign.
+
+Tab Leads
+Lead yang berasal dari campaign.
+
+Tab Funnel
+Funnel campaign.
+
+Tab Cost
+Biaya campaign.
+
+Tab Activities
+Aktivitas campaign.
+
+Tab Documents
+Dokumen pendukung.
+
+19. Dashboard Integration
+Executive Dashboard:
+Campaign Contribution
+
+Marketing Dashboard:
+Campaign Performance
+
+Digital Dashboard:
+Ads Campaign
+SEO Campaign
+
+20. Acceptance Criteria
+Campaign
+? Campaign dapat dibuat
+? Campaign memiliki owner
+
+Attribution
+? Lead dapat ditelusuri ke campaign
+
+Analytics
+? Funnel per campaign tampil
+? ROI tampil
+
+Dashboard
+? Top campaign tampil
+
+Catatan Arsitektur Penting
+Saat menyusun FSD-007, saya melihat bahwa Marketing Hub sebenarnya mulai mendekati struktur ERP Marketing yang matang.
+Saya merekomendasikan satu perubahan model data sebelum development dimulai:
+Daripada:
+Lead
+memiliki field:
+source
+ubah menjadi:
+Lead
+?
+Lead Source
+?
+Source Object
+Contoh:
+Lead A
+
+Source:
+- Webinar Juli
+- Google Ads Search
+- Portal Register
+Dengan model ini, nanti Anda bisa menjawab pertanyaan yang sangat bernilai bagi Owner:
+Campaign mana yang menghasilkan SQL terbanyak?
+
+Campaign mana yang menghasilkan Opportunity terbesar?
+
+Campaign mana yang menghasilkan Closed Won terbesar?
+
+Berapa kontribusi Portal terhadap revenue?
+
+Berapa kontribusi Google Ads terhadap revenue?
+
+
+FSD-008
+Project Management Module
+
+Tujuan
+Mengelola seluruh program kerja, inisiatif, dan project marketing.
+
+Project Philosophy
+Project adalah:
+Kumpulan pekerjaan
+yang memiliki tujuan,
+PIC,
+timeline,
+dan status.
+
+Contoh:
+Project
+Website Revamp 2026
+Berisi:
+Design Homepage
+Update Product Page
+SEO Audit
+Migration Content
+
+1. Menu Structure
+Project Management
+
+??? Dashboard
+??? Project List
+??? My Projects
+??? Project Calendar
+??? Kanban Board
+??? Project Archive
+
+2. Project Lifecycle
+Draft
+?
+Planning
+?
+In Progress
+?
+On Hold
+?
+Completed
+atau
+Cancelled
+
+3. Project Entity
+Trx_Project
+Fieldproject_idproject_nameproject_typeproject_ownerproject_managerstart_datedue_datestatusprioritydescription
+Contoh:
+PRJ-000001
+
+Website Revamp 2026
+
+4. Project Type
+Saya sarankan:
+TypeCampaignBrandingSEOWebsiteEventProduct LaunchInternal ImprovementTrainingOther
+5. Priority
+PriorityCriticalHighMediumLow
+6. Create Project
+Permission
+Owner
+Manager
+Marketing Specialist
+
+Form
+General Information
+FieldRequiredProject NameYesProject TypeYesProject OwnerYesDescriptionNo
+Timeline
+FieldRequiredStart DateYesDue DateYes
+Priority
+FieldRequiredPriorityYes
+7. Project Status
+StatusDraftPlanningIn ProgressOn HoldCompletedCancelled
+8. Project Detail Page
+Header
+Menampilkan:
+Project Name
+Owner
+Status
+Progress
+Due Date
+
+Tab Structure
+Overview
+Tasks
+Timeline
+Documents
+Activity Log
+Members
+
+9. Project Members
+Karena project sering melibatkan banyak orang.
+
+Trx_Project_Member
+Fieldproject_iduser_idrole
+Role:
+Owner
+Manager
+Member
+Observer
+
+10. Project Progress
+Dihitung otomatis dari task.
+
+Contoh:
+100 Task
+
+60 Done
+
+Progress = 60%
+
+11. Project Dashboard
+KPI Cards
+KPITotal ProjectActive ProjectCompleted ProjectOverdue Project
+Project Status Distribution
+StatusPlanningIn ProgressOn HoldCompleted
+Project Type Distribution
+TypeBrandingSEOEventWebsite
+12. Project Timeline
+Menampilkan:
+Start Date
+?
+Milestone
+?
+Due Date
+
+Versi MVP:
+Timeline sederhana.
+
+Versi 2:
+Gantt Chart.
+
+13. Kanban Board
+Sesuai referensi Trello yang Anda inginkan.
+
+Column:
+To Do
+In Progress
+Review
+Done
+
+Project dapat dilihat:
+List View
+Kanban View
+
+14. Milestone Management
+Trx_Project_Milestone
+Fieldmilestone_idproject_idmilestone_namedue_datestatus
+Contoh:
+Landing Page Launch
+
+15. Project Activity Log
+Semua perubahan dicatat.
+
+Contoh:
+23 Jun
+
+Project Created
+
+25 Jun
+
+Status Planning ? In Progress
+
+30 Jun
+
+Milestone Completed
+
+16. Project Documents
+Integrasi Google Drive.
+
+Folder:
+Marketing Hub
+
+??? Projects
+      ??? PRJ-000001
+
+Semua dokumen project disimpan di sini.
+
+17. Project Calendar
+Menampilkan:
+Project Start
+Project Due
+Milestone Due
+
+View:
+Month
+Week
+
+18. Overdue Detection
+Jika:
+Today > Due Date
+dan
+Status != Completed
+maka:
+Overdue
+
+Dashboard:
+Overdue Projects
+
+19. Workload Analysis
+Sangat penting untuk tim kecil (10 user).
+
+Menampilkan:
+UserActive ProjectA8B3C12
+Tujuannya:
+Mencegah overload pekerjaan
+
+20. Link Project ke Campaign
+Ini penting.
+
+Contoh:
+Campaign:
+Webinar Cloud Security
+memiliki:
+Project:
+Persiapan Webinar
+
+Relasi:
+Campaign
+?
+Project
+
+Bersifat opsional.
+
+21. Dashboard Integration
+Executive Dashboard:
+Active Project
+Completed Project
+Overdue Project
+
+Marketing Dashboard:
+Project Progress
+Workload
+
+Personal Dashboard:
+My Project
+
+22. Security Rules
+Owner:
+Semua project.
+
+Manager:
+Project tim.
+
+Member:
+Project yang diikuti.
+
+Observer:
+Read only.
+
+23. Acceptance Criteria
+Project
+? Bisa dibuat
+? Memiliki owner
+? Memiliki timeline
+
+Progress
+? Dihitung otomatis
+
+Kanban
+? Dapat dipindahkan antar status
+
+Dashboard
+? Menampilkan workload
+? Menampilkan overdue
+
+Catatan Penting
+Saat menyusun FSD-008 saya menemukan bahwa sebenarnya:
+Project
+?
+Task
+Banyak sistem gagal karena menggabungkan keduanya.
+Contoh:
+Project
+Website Revamp
+berisi:
+50 Task
+Maka secara arsitektur:
+Project
+?
+Task
+harus menjadi 2 modul terpisah.
+Karena itu FSD berikutnya yang wajib kita buat adalah:
+FSD-009
+Task Management
+yang nantinya akan menjadi mesin utama untuk:
+* Kanban Board 
+* Workload User 
+* Reminder 
+* Progress Project 
+* Personal Dashboard 
+* MOM Follow Up 
+Dan menurut saya Task Management akan menjadi modul kedua terpenting setelah Funnel Management dalam operasional harian tim marketing.
+
+
+
+FSD-009
+Task Management Module
+Tujuan
+Mengelola seluruh pekerjaan yang harus dikerjakan oleh user.
+Task dapat berasal dari:
+Project
+Lead Follow Up
+MOM
+Campaign
+Manual Task
+Approval
+
+Task Philosophy
+Satu task harus memiliki:
+PIC
+Deadline
+Status
+Progress
+Tanpa itu task dianggap tidak valid.
+
+1. Menu Structure
+Task Management
+
+??? My Tasks
+??? Team Tasks
+??? Task Board
+??? Task Calendar
+??? Overdue Tasks
+??? Task Archive
+
+2. Task Sources
+Task bisa dibuat dari berbagai modul.
+SourceProjectLeadMOMCampaignManualApproval
+Contoh:
+Lead:
+PT ABC
+
+?
+
+Follow Up Proposal
+
+?
+
+Task dibuat otomatis
+
+3. Task Entity
+Trx_Task
+Fieldtask_idtask_namesource_typesource_idassigned_tocreated_byprioritydue_datestatusprogressdescription
+Contoh:
+TSK-000001
+
+Follow Up PT ABC
+
+4. Task Status
+Saya sarankan:
+StatusBacklogTo DoIn ProgressWaiting ReviewDoneCancelled
+Kenapa ada:
+Waiting Review
+Karena banyak pekerjaan marketing perlu dicek manager sebelum dianggap selesai.
+
+5. Task Priority
+PriorityCriticalHighMediumLow
+6. Create Task
+Permission
+Semua User
+
+Form
+Basic Information
+FieldRequiredTask NameYesAssigned ToYesDue DateYesPriorityYes
+Detail
+FieldRequiredDescriptionNoSource TypeAutoSource ReferenceAuto
+7. Task Assignment
+Task dapat diassign ke:
+1 User
+untuk MVP.
+
+Versi 2:
+Multiple Assignee
+
+8. Task Lifecycle
+Backlog
+?
+To Do
+?
+In Progress
+?
+Waiting Review
+?
+Done
+
+Atau:
+Cancelled
+
+9. Task Board
+Mirip Trello.
+
+Column:
+Backlog
+To Do
+In Progress
+Waiting Review
+Done
+
+Drag & Drop.
+
+10. My Tasks
+Dashboard utama user.
+
+Filter:
+Today
+This Week
+Overdue
+Completed
+
+Tampilan:
+TaskDue DateStatusFollow Up PT ABC24 JunTo Do
+11. Team Tasks
+Manager dapat melihat task seluruh tim.
+
+Filter:
+User
+Status
+Priority
+Project
+
+12. Task Calendar
+Menampilkan:
+Deadline Task
+
+View:
+Month
+Week
+
+13. Task Progress
+Progress manual.
+
+Range:
+0%
+25%
+50%
+75%
+100%
+
+Atau otomatis dari checklist.
+Saya sarankan:
+Manual dulu
+untuk MVP.
+
+14. Task Checklist
+Trx_Task_Checklist
+Fieldchecklist_idtask_iditemcompleted
+Contoh:
+? Buat Landing Page
+
+? Review SEO
+
+? Publish Website
+
+Progress otomatis:
+2/4 selesai
+=
+50%
+
+Ini lebih ideal dibanding progress manual.
+
+15. Recurring Task
+Sangat berguna.
+
+Contoh:
+Weekly Marketing Report
+
+Setiap:
+Jumat
+
+Task otomatis dibuat.
+
+Versi MVP:
+Tidak perlu.
+
+Versi 2:
+Ya.
+
+16. Overdue Detection
+Jika:
+Today > Due Date
+dan:
+Status != Done
+maka:
+Overdue
+
+17. Reminder Engine
+Notifikasi internal.
+
+Contoh:
+Task akan jatuh tempo besok
+
+atau:
+Task overdue
+
+18. Task Comments
+Trx_Task_Comment
+Fieldcomment_idtask_idusercommentdate
+Contoh:
+Landing page sudah selesai.
+Menunggu review.
+
+19. Task Attachment
+Untuk MVP:
+Google Drive Link.
+
+Fieldattachment_url
+Tidak perlu upload file langsung.
+
+20. Task Relation
+Task bisa terkait ke:
+Lead
+Lead
+?
+Task
+
+Project
+Project
+?
+Task
+
+Campaign
+Campaign
+?
+Task
+
+MOM
+MOM
+?
+Task
+
+21. Auto Task Creation
+Sangat penting.
+
+Contoh:
+Outcome activity:
+Meeting Scheduled
+
+Sistem otomatis membuat:
+Task:
+Prepare Meeting
+
+Contoh:
+MOM:
+PIC:
+Andi
+
+Due:
+30 Jun
+
+Sistem otomatis membuat task.
+
+22. Workload Engine
+Menampilkan:
+UserOpen TaskAndi15Budi8
+Ini akan digunakan di:
+Dashboard
+Project
+Manager View
+
+23. KPI User
+Per user.
+
+KPIOpen TaskCompleted TaskOverdue TaskCompletion Rate
+24. KPI Team
+Manager.
+
+KPITotal TaskCompletedOverdueIn Progress
+25. Audit Trail
+Semua perubahan task dicatat.
+
+Contoh:
+Status:
+To Do
+?
+In Progress
+
+Assigned:
+Andi
+?
+Budi
+
+26. Dashboard Integration
+Personal Dashboard:
+My Tasks
+
+Project Dashboard:
+Project Progress
+
+Executive Dashboard:
+Team Workload
+
+27. Security Rules
+Owner:
+Semua task.
+
+Manager:
+Task tim.
+
+User:
+Task miliknya.
+
+Observer:
+Read Only.
+
+28. Acceptance Criteria
+Task
+? Bisa dibuat
+? Bisa diassign
+? Memiliki deadline
+
+Board
+? Drag & Drop status
+
+Reminder
+? Muncul di notification center
+
+Workload
+? Terhitung otomatis
+
+Catatan Arsitektur Penting
+Setelah FSD-009 selesai, saya melihat satu pola yang mulai muncul:
+Project
+?
+Task
+?
+User
+dan
+MOM
+?
+Action Item
+?
+Task
+?
+User
+Artinya MOM sebaiknya tidak dibuat sebagai dokumen statis.
+MOM harus menjadi sumber task.
+Karena itu saya merekomendasikan modul berikutnya adalah:
+FSD-010
+Meeting & MOM Management
+
+
+
+
+FSD-010
+Meeting & MOM Management
+Tujuan
+Mengelola seluruh meeting perusahaan dan menyimpan MOM (Minutes of Meeting) sebagai knowledge repository yang terstruktur.
+
+MOM Philosophy
+MOM bukan dokumen.
+MOM adalah:
+Decision Repository
++
+Action Repository
+
+Artinya setiap MOM harus menghasilkan:
+Decision
+Action Item
+PIC
+Due Date
+
+1. Menu Structure
+Meeting & MOM
+
+??? Dashboard
+??? Meeting List
+??? Create Meeting
+??? MOM Repository
+??? My Action Items
+??? Meeting Calendar
+
+2. Meeting Lifecycle
+Scheduled
+?
+Conducted
+?
+MOM Created
+?
+Action Items Generated
+?
+Completed
+
+3. Meeting Entity
+Trx_Meeting
+Fieldmeeting_idmeeting_titlemeeting_typemeeting_dateorganizerlocationstatus
+Contoh:
+MTG-000001
+
+Weekly Marketing Meeting
+
+4. Meeting Types
+TypeWeekly MeetingMonthly ReviewCampaign ReviewProject MeetingClient MeetingInternal DiscussionManagement MeetingOther
+5. Meeting Status
+StatusScheduledConductedCancelledClosed
+6. Create Meeting
+Permission
+All Users
+
+Form
+General
+FieldRequiredMeeting TitleYesMeeting TypeYesMeeting DateYes
+Additional
+FieldRequiredLocationNoDescriptionNo
+7. Participants
+Trx_Meeting_Participant
+Fieldmeeting_iduser_idattendance_status
+Attendance Status
+StatusInvitedAttendedAbsent
+8. MOM Creation
+Setelah meeting selesai.
+Button:
+Create MOM
+
+Trx_MOM
+Fieldmom_idmeeting_idcreated_bycreated_datesummarydecisionsnotes
+9. MOM Template
+Saya sarankan format standar.
+
+Meeting Information
+Meeting Title
+Date
+Participants
+
+Discussion Summary
+Ringkasan pembahasan
+
+Decisions
+Keputusan 1
+Keputusan 2
+Keputusan 3
+
+Action Items
+Action Item
+PIC
+Due Date
+
+10. Rich Text Editor
+Untuk MVP.
+Gunakan:
+HTML Editor
+
+Sehingga user bisa:
+Bold
+Italic
+Bullet
+Numbering
+Table
+
+11. Google Docs Integration
+Sesuai diskusi kita.
+Saya sarankan:
+Opsi 1 (Recommended)
+MOM disimpan di database.
+Ditampilkan langsung di aplikasi.
+
+Keuntungan:
+Searchable
+Filterable
+Reporting
+
+Opsi 2
+Generate Google Docs otomatis.
+
+Workflow:
+Create MOM
+?
+Generate Google Docs
+?
+Save URL
+
+Menurut saya:
+MVP = Simpan di aplikasi
+V2 = Auto Generate Google Docs
+
+12. MOM Repository
+Ini yang akan menjadi gudang pengetahuan perusahaan.
+
+Filter:
+Date
+Meeting Type
+Project
+Campaign
+Keyword
+Creator
+
+Contoh:
+Cari:
+SEO
+
+Muncul semua MOM terkait SEO.
+
+13. Search Engine
+Search Full Text.
+
+Bisa mencari:
+Keyword
+Keputusan
+Action Item
+
+Contoh:
+DCloud
+
+Menampilkan seluruh MOM yang membahas DCloud.
+
+14. Action Item Entity
+Ini bagian terpenting.
+Trx_MOM_Action
+Fieldaction_idmom_iddescriptionassigned_todue_datestatus
+Contoh:
+Update Landing Page
+
+PIC:
+Andi
+
+Due:
+30 Juni
+
+15. Auto Task Creation
+Saat Action Item dibuat:
+Create Task
+otomatis.
+
+Workflow:
+MOM
+?
+Action Item
+?
+Task
+
+Tidak perlu input ulang.
+
+16. Action Status
+StatusOpenIn ProgressCompletedCancelled
+Sinkron dengan Task.
+
+17. Meeting Calendar
+Menampilkan:
+Upcoming Meeting
+
+View:
+Week
+Month
+
+18. MOM Dashboard
+KPI
+KPITotal MeetingTotal MOMOpen Action ItemCompleted Action Item
+Meeting Trend
+Per minggu.
+
+Action Completion Rate
+Completed
+÷
+Total Action
+
+19. MOM Relation
+MOM dapat terkait dengan:
+
+Project
+Project
+?
+Meeting
+
+Campaign
+Campaign
+?
+Meeting
+
+Lead
+Opsional.
+
+Contoh:
+Client Meeting
+
+Bisa terkait ke Lead tertentu.
+
+20. Notification
+Reminder:
+Meeting Besok
+
+Reminder:
+Action Item Due
+
+Muncul di Notification Center.
+
+21. Dashboard Integration
+Personal Dashboard
+My Meetings
+My Action Items
+
+Project Dashboard
+Project MOM
+
+Executive Dashboard
+Meeting Activity
+
+22. Security Rules
+Owner
+Semua MOM.
+
+Manager
+MOM tim.
+
+User
+MOM yang diikuti.
+
+Observer
+Read Only.
+
+23. Archive Policy
+MOM tidak boleh dihapus.
+
+Jika salah:
+Archived
+
+bukan:
+Delete
+
+24. Acceptance Criteria
+Meeting
+? Bisa dibuat
+? Ada peserta
+
+MOM
+? Bisa dibuat
+? Bisa dicari
+
+Action Item
+? Membuat task otomatis
+
+Repository
+? Full text search berjalan
+
+Catatan Arsitektur Penting
+Setelah FSD-010, struktur inti Marketing Hub mulai lengkap:
+CRM Domain
+??? Lead
+??? Activity
+??? Funnel
+??? Opportunity
+
+Marketing Domain
+??? Campaign
+??? Portal
+
+Operations Domain
+??? Project
+??? Task
+??? MOM
+
+Platform Domain
+??? User
+??? Role
+??? Approval
+??? Notification
+??? Dashboard
+Dan sekarang muncul domain baru:
+Financial Domain
+karena sudah menyebut:
+Biaya Ads
+Biaya Event
+Biaya Tools
+Biaya Marketing
+Maka modul berikutnya yang paling tepat adalah:
+FSD-011
+Marketing Cost Management
+Karena setelah Cost selesai, kita bisa mulai menghitung:
+Campaign ROI
+Cost per Lead
+Cost per MQL
+Cost per SQL
+Cost per Opportunity
+Cost per Won
+yang biasanya menjadi KPI paling penting bagi Owner dan Manager Marketing.
+
+
+FSD-011
+Marketing Cost Management
+
+Tujuan
+Mengelola seluruh biaya marketing dan menghubungkannya dengan campaign, lead, funnel, dan performa bisnis.
+
+Cost Philosophy
+Cost bukan sekadar pencatatan pengeluaran.
+Cost harus dapat ditelusuri sampai:
+Cost
+?
+Campaign
+?
+Lead
+?
+MQL
+?
+SQL
+?
+Opportunity
+?
+Won
+Sehingga bisa dihitung ROI.
+
+1. Menu Structure
+Marketing Cost
+
+??? Dashboard
+??? Cost Transactions
+??? Cost Categories
+??? Budget Planning
+??? Cost Analysis
+??? Cost Reports
+
+2. Cost Lifecycle
+Budget
+?
+Actual Cost
+?
+Campaign Allocation
+?
+ROI Analysis
+
+3. Cost Categories
+Master_Cost_Category
+CategoryGoogle AdsMeta AdsLinkedIn AdsWebinarWorkshopEventSponsorshipDesignContent CreationSEOAgencyMarketing ToolsSoftware SubscriptionTrainingMiscellaneous
+4. Cost Entity
+Trx_Cost
+Fieldcost_idcost_datecategorydescriptionamountcampaign_idproject_idvendorcreated_by
+Contoh:
+CST-000001
+
+Google Ads Juli
+
+Rp 15.000.000
+
+5. Cost Classification
+Cost bisa terkait:
+TypeCampaignProjectGeneral Marketing
+Contoh:
+Campaign Cost
+Workshop Cloud Security
+
+Project Cost
+Website Revamp
+
+General Cost
+Google Meet
+
+6. Create Cost
+Permission
+Admin
+Manager
+Owner
+
+Form
+Basic Information
+FieldRequiredCost DateYesCategoryYesAmountYesDescriptionYes
+Relation
+FieldRequiredCampaignNoProjectNo
+7. Budget Planning
+Budget Entity
+Trx_Budget
+Fieldbudget_idyearcategorybudget_amount
+Contoh:
+Google Ads
+
+2026
+
+Rp 300.000.000
+
+8. Budget vs Actual
+Dashboard:
+CategoryBudgetActualAds300M250MEvent100M80M
+9. Campaign Cost Integration
+Campaign Detail:
+Tab baru:
+Cost
+
+Menampilkan:
+CostVenueSpeakerDesignAds
+Total:
+Campaign Cost
+
+10. Project Cost Integration
+Project Detail:
+Tab:
+Cost
+
+Contoh:
+Website Revamp
+
+Rp 50.000.000
+
+11. Vendor Tracking
+Master_Vendor
+Fieldvendor_idvendor_namecategory
+Contoh:
+Google
+
+Meta
+
+Agency ABC
+
+12. Cost Dashboard
+KPI Cards
+KPITotal CostCost This MonthCampaign CostProject Cost
+Category Breakdown
+CategoryAmountAds50MEvent20M
+Brand Breakdown
+Karena Anda punya:
+DCloud
+DTrust
+DCode
+DInfra
+Cost dapat dikaitkan ke brand.
+
+Contoh:
+BrandCostDCloud50MDTrust20M
+13. Cost per Lead
+Formula:
+Total Cost
+÷
+Total Lead
+
+Contoh:
+100M
+÷
+1000 Lead
+
+=
+100.000 / Lead
+
+14. Cost per MQL
+Formula:
+Total Cost
+÷
+Total MQL
+
+15. Cost per SQL
+Formula:
+Total Cost
+÷
+Total SQL
+
+16. Cost per Opportunity
+Formula:
+Total Cost
+÷
+Total Opportunity
+
+17. Cost per Won
+Formula:
+Total Cost
+÷
+Total Won
+
+Ini KPI yang biasanya paling disukai Owner.
+
+18. ROI Calculation
+Formula sederhana:
+Won Revenue
+-
+Cost
+
+Formula ROI:
+Revenue
+÷
+Cost
+
+Contoh:
+Revenue
+
+500M
+
+Cost
+
+100M
+
+ROI
+
+5x
+
+19. Campaign ROI
+Per campaign.
+
+Contoh:
+Workshop Cloud
+
+Cost
+20M
+
+Revenue
+100M
+
+ROI
+5x
+
+20. Product ROI
+Per brand.
+
+Contoh:
+BrandROIDCloud6xDTrust4x
+21. Cost Approval
+Saya sarankan V1:
+Tidak perlu approval.
+
+V2:
+Cost Request
+?
+Approval
+?
+Approved
+
+22. Cost Reports
+Filter:
+Date
+Category
+Brand
+Campaign
+Project
+Vendor
+
+Laporan:
+Cost Summary
+Budget vs Actual
+Cost per Funnel Stage
+Campaign ROI
+Brand ROI
+
+23. Dashboard Integration
+Executive Dashboard:
+Marketing Spend
+ROI
+Cost per SQL
+Cost per Won
+
+Marketing Dashboard:
+Campaign Cost
+Campaign ROI
+
+Project Dashboard:
+Project Cost
+
+24. Security Rules
+Owner:
+Semua data.
+
+Manager:
+Semua data marketing.
+
+Admin:
+Input dan edit.
+
+User biasa:
+Tidak melihat cost.
+
+25. Acceptance Criteria
+Cost
+? Bisa dicatat
+? Bisa dikaitkan ke campaign
+? Bisa dikaitkan ke project
+
+Dashboard
+? Cost tampil
+? ROI tampil
+
+Reports
+? Budget vs Actual tampil
+
+Catatan Arsitektur Penting
+Setelah FSD-011, saya melihat kita sudah memiliki hampir seluruh domain bisnis Marketing Hub.
+Yang masih tersisa adalah domain platform:
+Notification Center
+User Management
+Role Management
+Settings
+Master Data
+Namun ada satu modul yang menurut saya jauh lebih penting untuk dibuat sebelum User Management:
+FSD-012
+Notification Center
+Karena saat ini sudah ada banyak event yang menghasilkan tindakan:
+Approval Pending
+Follow Up Due
+Task Due
+Task Overdue
+Meeting Besok
+MOM Action Item
+Lead Assignment
+Lead Transfer
+SQL Assignment
+Tanpa Notification Center, user harus membuka banyak menu untuk mengetahui apa yang harus dikerjakan.
+
+
+
+FSD-012
+Notification Center
+
+Tujuan
+Menjadi pusat seluruh notifikasi dalam Marketing Hub.
+User tidak perlu membuka banyak menu untuk mengetahui:
+* task baru 
+* follow up jatuh tempo 
+* approval pending 
+* lead assignment 
+* project assignment 
+* MOM action item 
+
+Notification Philosophy
+Notification bukan chat.
+Notification adalah:
+Action Required
+yang membutuhkan tindakan user.
+
+1. Menu Structure
+Notification Center
+
+??? All Notifications
+??? Unread
+??? My Tasks
+??? My Approvals
+??? My Follow Ups
+??? Archive
+
+2. Notification Entity
+Trx_Notification
+Fieldnotification_iduser_idnotification_typereference_typereference_idtitlemessagestatuscreated_dateread_date
+3. Notification Types
+Lead
+LEAD_ASSIGNED
+LEAD_TRANSFERRED
+SQL_ASSIGNED
+
+Activity
+FOLLOWUP_DUE
+FOLLOWUP_OVERDUE
+
+Task
+TASK_ASSIGNED
+TASK_DUE
+TASK_OVERDUE
+TASK_COMPLETED
+
+Approval
+APPROVAL_PENDING
+APPROVAL_APPROVED
+APPROVAL_REJECTED
+
+MOM
+ACTION_ITEM_ASSIGNED
+ACTION_ITEM_DUE
+
+Project
+PROJECT_ASSIGNED
+PROJECT_OVERDUE
+
+4. Notification Status
+StatusUnreadReadArchived
+5. Notification Bell
+Header Application
+?? 12
+
+Menampilkan:
+10 unread
+2 overdue
+
+6. Notification Priority
+PriorityCriticalHighNormalLow
+7. Smart Notification Rules
+Task Due Tomorrow
+Create notification.
+
+Follow Up Due Today
+Create notification.
+
+Approval Pending
+Create notification.
+
+Task Overdue
+Create notification.
+
+8. Notification Deep Link
+Klik notification:
+Open Object
+
+Contoh:
+Task Assigned
+?
+Open Task
+
+9. Notification Dashboard Widget
+Personal Dashboard
+My Notifications
+
+10. Acceptance Criteria
+? Notification otomatis dibuat
+? Notification dapat dibuka
+? Notification dapat diarsipkan
+
+
+FSD-013
+User & Role Management
+
+Tujuan
+Mengelola user, role, permission, dan akses sistem.
+
+Security Philosophy
+Jangan hardcode permission.
+Permission harus configurable.
+
+1. User Hierarchy
+Owner
+?
+Manager
+?
+Staff
+
+2. User Entity
+Mst_User
+Fielduser_idemployee_nameemailrolestatuslast_login
+3. User Status
+StatusActiveInactiveSuspended
+4. Default Roles
+Owner
+Full Access
+
+Manager
+Manage Team
+
+Admin
+System Operation
+
+BDR
+Lead Management
+
+Digital Marketing
+Campaign & Portal
+
+Marketing Specialist
+Project & Campaign
+
+5. Role Entity
+Mst_Role
+Fieldrole_idrole_namedescription
+6. Permission Entity
+Mst_Permission
+Fieldpermission_idmoduleaction
+Contoh:
+LEAD_VIEW
+LEAD_CREATE
+LEAD_EDIT
+LEAD_DELETE
+
+7. Role Permission Matrix
+Mst_Role_Permission
+Fieldrole_idpermission_id
+8. User Specific Permission
+Karena requirement Anda:
+Per user bisa dicentang boleh melakukan apa saja.
+
+Trx_User_Permission
+Fielduser_idpermission_idallow
+Override role.
+
+9. Login
+Google Account Only.
+
+Menggunakan:
+Google Workspace
+
+10. Login Flow
+Login Google
+?
+Email Match
+?
+User Found
+?
+Login Success
+
+11. Session Management
+Timeout:
+8 jam
+
+12. Audit Login
+Trx_Login_History
+Fieldlogin_iduser_idlogin_timelogout_timeip_address
+13. User Dashboard
+Admin dapat melihat:
+Total User
+Active User
+Last Login
+
+14. User Transfer Rules
+Lead Transfer
+Approval Required.
+
+Sales Transfer
+Approval Required.
+
+15. Acceptance Criteria
+? User dapat login
+? Role berjalan
+? Permission berjalan
+? Override berjalan
+
+
+FSD-014
+Settings & Master Data
+
+Tujuan
+Menjadi pusat konfigurasi sistem.
+
+Configuration Philosophy
+Tidak boleh ada dropdown yang hardcoded.
+Semua dictionary harus berasal dari master data.
+
+1. Menu Structure
+Settings
+
+??? Master Lead Status
+??? Master Activity Outcome
+??? Master Funnel Stage
+??? Master Products
+??? Master Brands
+??? Master Industries
+??? Master Company Size
+??? Master Cost Category
+??? Master Campaign Type
+??? Master Project Type
+??? Master Vendors
+??? Master Notification Rules
+??? System Settings
+
+2. Master Products
+Karena requirement Anda.
+Mst_Product
+ProductDCloudDTrustDCodeDInfra
+3. Master Brands
+Untuk future scalability.
+Mst_Brand
+
+4. Master Funnel Stage
+Mst_Funnel_Stage
+Lead
+MQL
+SQL
+Opportunity
+Won
+Lost
+Exited
+
+5. Master Activity Outcome
+Semua dropdown call outcome.
+
+Mst_Activity_Outcome
+Contoh:
+Interested
+Meeting Scheduled
+No Need
+Do Not Contact
+Ask Proposal
+Ask Trial
+
+6. Master Lead Source
+Mst_Lead_Source
+Portal
+Google Ads
+Webinar
+Workshop
+Referral
+LinkedIn
+Internal Database
+
+7. Master Industry
+Mst_Industry
+Contoh:
+Manufacturing
+Healthcare
+Education
+Government
+Financial Services
+Technology
+
+8. Master Company Size
+Mst_Company_Size
+Contoh:
+1-10
+11-50
+51-200
+201-500
+500+
+
+9. Master Cost Category
+Terhubung ke Marketing Cost.
+
+10. Master Campaign Type
+Terhubung ke Campaign.
+
+11. Master Project Type
+Terhubung ke Project.
+
+12. Master Vendor
+Untuk biaya.
+
+13. System Settings
+General
+SettingCompany NameLogoTimezoneCurrency
+14. Approval Settings
+Versi 2.
+
+Configurable:
+Approval Type
+Approver
+Level
+
+15. Notification Settings
+Versi 2.
+
+Contoh:
+Task Due Reminder
+1 hari sebelum
+
+16. Numbering Engine
+Sangat penting.
+
+Contoh:
+LED-000001
+ACT-000001
+TSK-000001
+PRJ-000001
+CMP-000001
+APR-000001
+
+Mst_Numbering
+Fieldprefixcurrent_number
+17. Data Retention Policy
+MVP:
+Tidak ada hard delete.
+
+Gunakan:
+is_deleted
+
+18. Backup Settings
+Karena menggunakan Google Sheets.
+
+Daily:
+Automatic Backup
+
+ke folder Google Drive khusus.
+
+19. Audit Configuration
+Perubahan master data wajib dicatat.
+
+Trx_Audit_Log
+Before
+After
+User
+Timestamp
+
+20. Acceptance Criteria
+? Semua dropdown berasal dari master
+? Semua master dapat dikelola
+? Numbering otomatis
+? Audit berjalan
+
+
+
+
+
+Top of Form
+
+Bottom of Form
+
+
+
+
+
