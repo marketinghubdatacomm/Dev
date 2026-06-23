@@ -23,14 +23,6 @@ function findSheetRow(sheetName, predicate) {
   return rows.find(predicate);
 }
 
-function mapRow(headers, row) {
-  const obj = {};
-  headers.forEach((header, index) => {
-    obj[header] = row[index];
-  });
-  return obj;
-}
-
 function findSheetRows(sheetName, predicate) {
   return readSheetRows(sheetName).filter(predicate);
 }
@@ -39,13 +31,20 @@ function findSheetRowIndex(sheetName, predicate) {
   const sheet = getSheet(sheetName);
   if (!sheet) return -1;
   const data = sheet.getDataRange().getValues().slice(1);
+  const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
   for (let i = 0; i < data.length; i++) {
-    const row = data[i];
-    const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
-    const obj = mapRow(headers, row);
+    const obj = mapRow(headers, data[i]);
     if (predicate(obj)) {
       return i + 2;
     }
   }
   return -1;
+}
+
+function mapRow(headers, row) {
+  const obj = {};
+  headers.forEach((header, index) => {
+    obj[header] = row[index];
+  });
+  return obj;
 }

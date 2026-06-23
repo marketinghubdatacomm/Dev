@@ -30,6 +30,18 @@ function findApprovalByReference(referenceId) {
   return findSheetRows(SHEETS.TRX_APPROVAL, row => safeString(row.reference_id) === safeString(referenceId));
 }
 
+function findCompanyById(companyId) {
+  return findSheetRow(SHEETS.MASTER_COMPANY, row => safeString(row.company_id) === safeString(companyId) && safeString(row.is_deleted) !== 'TRUE');
+}
+
+function findContactById(contactId) {
+  return findSheetRow(SHEETS.MASTER_CONTACT, row => safeString(row.contact_id) === safeString(contactId) && safeString(row.is_deleted) !== 'TRUE');
+}
+
+function findUserById(userId) {
+  return findSheetRow(SHEETS.MASTER_USER, row => safeString(row.user_id) === safeString(userId) && safeString(row.is_deleted) !== 'TRUE');
+}
+
 function getDashboardCache() {
   return readSheetRows(SHEETS.RPT_DASHBOARD_CACHE);
 }
